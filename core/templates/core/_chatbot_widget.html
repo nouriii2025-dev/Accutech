@@ -1,0 +1,25 @@
+<button id="chat-launcher" class="chat-launcher" aria-label="Open chat assistant" aria-expanded="false">
+  <span class="pulse" aria-hidden="true"></span>
+  <i class="bi bi-chat-dots-fill" aria-hidden="true"></i>
+</button>
+
+<div id="chat-window" class="chat-window" role="dialog" aria-label="Accutech assistant">
+  <div class="chat-header">
+    <div class="title">
+      <span class="status-dot" aria-hidden="true"></span>
+      Accutech Assistant
+    </div>
+    <button id="chat-close" aria-label="Close chat">&times;</button>
+  </div>
+
+  <div id="chat-body" class="chat-body"></div>
+  <div id="chat-quick-replies" class="chat-quick-replies"></div>
+
+  <form id="chat-form" class="chat-input-row">
+    <input id="chat-input" type="text" autocomplete="off"
+           placeholder="Ask about a product, calibration...">
+    <button type="submit" aria-label="Send message">
+      <i class="bi bi-send-fill"></i>
+    </button>
+  </form>
+</div>

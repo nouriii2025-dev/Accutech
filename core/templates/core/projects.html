@@ -1,0 +1,72 @@
+{% extends "core/base.html" %}
+{% block title %}Projects — MEP, Power, Water & Oil and Gas | Accutech{% endblock %}
+
+{% block content %}
+<section class="section" style="padding-top: 160px;">
+  <div class="container-fluid-safe">
+    <div class="eyebrow reveal in">Project Experience</div>
+    <h1 class="reveal in" style="max-width: 22ch; font-size: clamp(2.2rem, 4vw, 3.2rem);">
+      Instrumentation proven across three industry verticals.
+    </h1>
+    <p class="section-lede reveal in" style="max-width: 62ch; font-size: 1.1rem;">
+      Having successfully executed a large number of projects across various
+      industry verticals, we bring reasonable experience across most sectors —
+      a trusted, reliable partner for instrumentation solutions from bidding
+      through commissioning.
+    </p>
+  </div>
+</section>
+
+<section class="section-panel">
+  <div class="container-fluid-safe">
+    <div class="grid-3">
+      {% for p in project_categories %}
+      <div class="card-solution reveal">
+        <div class="icon"><i class="bi bi-{{ p.icon }}"></i></div>
+        <h3>{{ p.title }}</h3>
+        <p>{{ p.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-fluid-safe">
+    <div class="grid-2 reveal">
+      <div>
+        <div class="eyebrow">Regional Reach</div>
+        <h2>Good presence across the UAE and GCC</h2>
+        <p style="color: var(--steel); max-width: 50ch;">
+          We work closely with leading EPCs, system integrators and end
+          users across the region, supplying a wide instrumentation
+          portfolio backed by strong product knowledge.
+        </p>
+      </div>
+      <div>
+        <div class="eyebrow">Delivery Model</div>
+        <h2>Turnkey packages, not just parts</h2>
+        <p style="color: var(--steel); max-width: 50ch;">
+          From specification through supply and commissioning, we deliver
+          complete turnkey solutions and packages so your project team can
+          focus on the build, not the sourcing.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-panel">
+  <div class="container-fluid-safe">
+    <div class="cta-band reveal">
+      <div>
+        <h3>Have a project that needs instrumentation?</h3>
+        <p>Share your scope and our engineers will put together a package.</p>
+      </div>
+      <a href="{% url 'core:contact' %}" class="btn-ignition">
+        <i class="bi bi-send-fill"></i> Discuss Your Project
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}

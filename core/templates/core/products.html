@@ -1,0 +1,66 @@
+{% extends "core/base.html" %}
+{% block title %}Products — Full Instrumentation Catalog | Accutech{% endblock %}
+
+{% block content %}
+<section class="section" style="padding-top: 160px;">
+  <div class="container-fluid-safe">
+    <div class="eyebrow reveal in">Product Range</div>
+    <h1 class="reveal in" style="max-width: 22ch; font-size: clamp(2.2rem, 4vw, 3.2rem);">
+      Every category your process needs, under one roof.
+    </h1>
+    <p class="section-lede reveal in" style="max-width: 62ch; font-size: 1.1rem;">
+      From pressure gauges to precision calibrators, valves, fittings and
+      hygienic process equipment — our product range spans nine major
+      categories built from the world's leading instrumentation brands.
+    </p>
+  </div>
+</section>
+
+<section class="section-panel">
+  <div class="container-fluid-safe">
+    <div class="grid-3">
+      {% for cat in product_categories %}
+      <div class="card-solution reveal">
+        <div class="icon"><i class="bi bi-{{ cat.icon }}"></i></div>
+        <h3>{{ cat.title }}</h3>
+        <ul style="list-style:none; margin: 0.6rem 0 0; padding:0; display:grid; gap:0.4rem;">
+          {% for sub in cat.subcategories %}
+          <li style="color: var(--steel); font-size: 0.88rem; display:flex; gap:0.5rem; align-items:baseline;">
+            <span style="color: var(--ignition);">&raquo;</span> {{ sub }}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-fluid-safe">
+    <div class="dial-divider reveal">
+      <span class="eyebrow" style="margin:0;">Brands We Carry</span>
+      <span class="line"></span>
+    </div>
+    <div class="reveal" style="display:flex; flex-wrap:wrap; gap: 0.7rem;">
+      {% for name in brand_roster %}
+      <span class="mono" style="border:1px solid var(--line-strong); background:var(--bg-panel-2); padding:8px 14px; border-radius:20px; font-size:0.82rem; color:var(--chrome);">{{ name }}</span>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section-panel">
+  <div class="container-fluid-safe">
+    <div class="cta-band reveal">
+      <div>
+        <h3>Looking for a specific part number?</h3>
+        <p>Send us the spec sheet or model number and we'll confirm stock, lead time and pricing.</p>
+      </div>
+      <a href="{% url 'core:contact' %}" class="btn-ignition">
+        <i class="bi bi-send-fill"></i> Request a Quote
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,185 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="hero">
+  <div class="hero-grid">
+    <div class="reveal in">
+      <div class="eyebrow">Est. 1996 · Dubai, UAE</div>
+      <h1>
+        Precision instrumentation,<br>
+        engineered like it's <span class="accent">redline‑tested</span>.
+      </h1>
+      <p class="hero-lede">
+        Accutech delivers pressure, temperature, force, level, flow and SF6 gas
+        measurement solutions to the region's industrial projects — backed by
+        an in-house calibration lab and partnerships with ABB, WIKA and Trafag.
+      </p>
+      <div class="hero-actions">
+        <a href="{% url 'core:contact' %}" class="btn-ignition">
+          <i class="bi bi-lightning-charge-fill"></i> Request a Quote
+        </a>
+        <a href="{% url 'core:solutions' %}" class="btn-outline-steel">
+          <i class="bi bi-speedometer2"></i> Explore Solutions
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        {% for stat in stats %}
+        <div>
+          <div class="stat-value mono">{{ stat.value }}</div>
+          <div class="stat-label">{{ stat.label }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="gauge-wrap reveal in">
+      <div class="gauge-panel">
+        <svg viewBox="0 0 300 300" width="320" height="320" role="img" aria-label="Instrument accuracy gauge showing plus or minus zero point one percent">
+          <circle cx="150" cy="150" r="120" fill="none" stroke="var(--line)" stroke-width="1"></circle>
+
+          <!-- background arc -->
+          <path d="M 72.22 227.78 A 110 110 0 1 1 227.78 227.78"
+                fill="none" class="gauge-arc-bg" stroke-width="6" stroke-linecap="round"></path>
+
+          <!-- animated fill arc (dasharray approximated to path length) -->
+          <path d="M 72.22 227.78 A 110 110 0 1 1 227.78 227.78"
+                fill="none" class="gauge-arc-fill" stroke-width="6" stroke-linecap="round"
+                pathLength="340"></path>
+
+          <!-- tick marks -->
+          <g>
+            <line x1="72.2" y1="227.8" x2="84.9" y2="215.1" class="gauge-tick major"></line>
+            <line x1="42.1" y1="171.5" x2="51.9" y2="169.5" class="gauge-tick"></line>
+            <line x1="48.4" y1="107.9" x2="65.0" y2="114.8" class="gauge-tick major"></line>
+            <line x1="88.9" y1="58.5"  x2="94.4" y2="66.9"  class="gauge-tick"></line>
+            <line x1="150.0" y1="40.0" x2="150.0" y2="58.0" class="gauge-tick major"></line>
+            <line x1="211.1" y1="58.5" x2="205.6" y2="66.9" class="gauge-tick"></line>
+            <line x1="251.6" y1="107.9" x2="235.0" y2="114.8" class="gauge-tick major"></line>
+            <line x1="257.9" y1="171.5" x2="248.1" y2="169.5" class="gauge-tick redline"></line>
+            <line x1="227.8" y1="227.8" x2="215.1" y2="215.1" class="gauge-tick major redline"></line>
+          </g>
+
+          <!-- needle -->
+          <g class="gauge-needle">
+            <line x1="150" y1="150" x2="150" y2="60" stroke="var(--ignition)" stroke-width="4" stroke-linecap="round"></line>
+            <circle cx="150" cy="150" r="9" fill="var(--ignition)"></circle>
+            <circle cx="150" cy="150" r="4" fill="#0b2447"></circle>
+          </g>
+
+          <text x="150" y="185" text-anchor="middle" class="gauge-readout">&#177;0.1%</text>
+          <text x="150" y="203" text-anchor="middle" class="gauge-readout-label">RATED ACCURACY</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-panel">
+  <div class="container-fluid-safe">
+    <div class="section-title-row reveal">
+      <div>
+        <div class="eyebrow">What We Deliver</div>
+        <h2>Measurement solutions built for the plant floor</h2>
+      </div>
+      <p class="section-lede">
+        From the bidding stage through commissioning, our solutions integrate
+        into your customers' business processes and keep running, reliably,
+        at every pressure and temperature the plant can throw at them.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      {% for s in solutions %}
+      <div class="card-solution reveal">
+        <div class="icon">
+          <i class="bi bi-{% if s.icon == 'gauge' %}speedometer2{% elif s.icon == 'thermometer' %}thermometer-half{% elif s.icon == 'layers' %}layers{% elif s.icon == 'activity' %}activity{% elif s.icon == 'sliders' %}sliders{% else %}wind{% endif %}"></i>
+        </div>
+        <h3>{{ s.title }}</h3>
+        <p>{{ s.summary }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-fluid-safe">
+    <div class="grid-2 reveal">
+      <div class="card-solution">
+        <div class="icon"><i class="bi bi-boxes"></i></div>
+        <h3>Full Product Catalog</h3>
+        <p>Nine categories, from pressure gauges to hygienic process valves,
+           sourced from the world's leading instrumentation brands.</p>
+        <a href="{% url 'core:products' %}" class="btn-outline-steel" style="margin-top:1rem; padding:10px 20px; font-size:0.85rem;">
+          Browse Products <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+      <div class="card-solution">
+        <div class="icon"><i class="bi bi-diagram-3"></i></div>
+        <h3>Project Experience</h3>
+        <p>MEP & district cooling, power/water/desalination, and oil & gas —
+           delivered as turnkey instrumentation packages.</p>
+        <a href="{% url 'core:projects' %}" class="btn-outline-steel" style="margin-top:1rem; padding:10px 20px; font-size:0.85rem;">
+          View Projects <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-panel">
+  <div class="container-fluid-safe">
+    <div class="dial-divider reveal">
+      <span class="eyebrow" style="margin:0;">Trusted Brand Partners</span>
+      <span class="line"></span>
+    </div>
+    <div class="brand-strip">
+      {% for b in brands %}
+      <div class="brand-card reveal">
+        <div class="brand-name">{{ b.name }}</div>
+        <div class="brand-role">{{ b.role }}</div>
+        <p>{{ b.note }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section-panel">
+  <div class="container-fluid-safe">
+    <div class="section-title-row reveal">
+      <div>
+        <div class="eyebrow">Quality You Can Audit</div>
+        <h2>Calibration you can trace, every time</h2>
+      </div>
+      <p class="section-lede">
+        Our in-house lab keeps every instrument we touch inside spec — with the
+        paperwork to prove it.
+      </p>
+    </div>
+    <ul class="cert-list reveal">
+      {% for c in certifications %}
+      <li><i class="bi bi-patch-check-fill"></i> {{ c }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-fluid-safe">
+    <div class="cta-band reveal">
+      <div>
+        <h3>Need instrumentation specified for a live project?</h3>
+        <p>Send us your process conditions — our engineers will size and quote it.</p>
+      </div>
+      <a href="{% url 'core:contact' %}" class="btn-ignition">
+        <i class="bi bi-send-fill"></i> Start a Conversation
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

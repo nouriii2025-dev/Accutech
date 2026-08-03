@@ -1,0 +1,1 @@
+web: gunicorn accutech_redesign.wsgi

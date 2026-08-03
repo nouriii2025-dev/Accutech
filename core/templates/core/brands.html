@@ -1,0 +1,60 @@
+{% extends "core/base.html" %}
+{% block title %}Brand Partners — ABB, WIKA & Trafag | Accutech{% endblock %}
+
+{% block content %}
+<section class="section" style="padding-top: 160px;">
+  <div class="container-fluid-safe">
+    <div class="eyebrow reveal in">Brand Partners</div>
+    <h1 class="reveal in" style="max-width: 22ch; font-size: clamp(2.2rem, 4vw, 3.2rem);">
+      Reputed brands. One regional partner.
+    </h1>
+    <p class="section-lede reveal in" style="max-width: 62ch; font-size: 1.1rem;">
+      We represent reputed brands such as ABB and WIKA, and we're the only
+      Trafag partner in the Middle East. Our in-house calibration facility is
+      ISO/IEC 17025:2005 DAC accredited and ISO 9001:2015 BAS certified,
+      approved by WIKA.
+    </p>
+  </div>
+</section>
+
+<section class="section-panel">
+  <div class="container-fluid-safe">
+    <div class="brand-strip">
+      {% for b in brands %}
+      <div class="brand-card reveal">
+        <div class="brand-name">{{ b.name }}</div>
+        <div class="brand-role">{{ b.role }}</div>
+        <p>{{ b.note }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-fluid-safe">
+    <div class="grid-2 reveal">
+      <div>
+        <div class="eyebrow">Announcement</div>
+        <h2>Confirmed ABB Value Provider</h2>
+        <p style="color: var(--steel); max-width: 50ch;">
+          We are happy to announce that Accutech has been confirmed as an
+          ABB Value Provider for their instrumentation product lines,
+          reinforcing our position as a trusted single point of contact for
+          ABB solutions across the region.
+        </p>
+      </div>
+      <div>
+        <div class="eyebrow">Accreditation</div>
+        <h2>Calibration approved by WIKA</h2>
+        <p style="color: var(--steel); max-width: 50ch;">
+          Our in-house calibration lab holds ISO/IEC 17025:2005 DAC
+          accreditation and ISO 9001:2015 BAS certification, and is approved
+          by WIKA — giving every reading we issue a documented, auditable
+          chain of accuracy.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
