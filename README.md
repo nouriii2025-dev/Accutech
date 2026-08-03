@@ -1,4 +1,4 @@
-# Accutech — Website Redesign (Django + Python)
+# Accutech — Website (Django + Python)
 
 A full redesign concept for **accutech.ae**, rebuilt with a Python/Django
 backend and a responsive HTML/CSS/JS frontend. The content matches the
@@ -100,6 +100,8 @@ to update text across the whole site without touching templates.
 
 - Set `DEBUG = False` and a real `SECRET_KEY` (env var) in `settings.py`
 - Set `ALLOWED_HOSTS` to your real domain
+
+  ##Access the website : https://accutech-chto.onrender.com
 - Run `python3 manage.py collectstatic` and serve `staticfiles/` via
   Nginx/whitenoise
 - Put SQLite behind a real database (Postgres recommended) for production traffic
