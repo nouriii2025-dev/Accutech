@@ -67,6 +67,11 @@ def brands(request):
     }
     return render(request, "core/brands.html", context)
 
+def terms(request):
+    context = {"company": COMPANY}
+    return render(request, "core/terms.html", context)
+
+
 
 def contact(request):
     if request.method == "POST":

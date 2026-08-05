@@ -173,10 +173,10 @@ PROJECT_CATEGORIES = [
 ]
 
 BRAND_ROSTER = [
-    "WIKA", "Winters", "Accutech", "Trafag", "ABB", "WIKA / Cella", "E+E",
-    "Techtrol", "Kirchner & Tochter", "Racine", "Mueller", "Inoxpa",
-    "Alco-Valves", "Maximator", "Alco", "Insert Deal", "Drastar",
-    "Land Ametek", "AccuClean",
+    "WIKA", "ABB", "Trafag", "E+E", "Inoxpa", "DL Valve Pvt. Ltd.",
+    "Graco", "HIP", "Aptek", "Techtrol", "TA CHEN International, Inc",
+    "Ventil", "Insert Deal", "Drastar Co., Ltd", "Ducco", "Advance Valves",
+    "Realix", "Goorej / Lawkim Motors", "Uniphos", "Metal Mech", "S+S Regeltechnik", "SPAC Pneumatic", "Tracklynk", "Slanvert", "AMETEK Sensors, Test & Calibration", "UNP Polyvalves", "PEXA", "Speir Hunter Limited"
 ]
 
 

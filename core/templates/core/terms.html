@@ -1,0 +1,139 @@
+{% extends "core/base.html" %}
+{% block title %}Terms & Conditions | Accutech{% endblock %}
+
+{% block content %}
+<section class="section" style="padding-top: 160px;">
+  <div class="container-fluid-safe">
+    <div class="eyebrow reveal in">Legal</div>
+    <h1 class="reveal in" style="max-width: 20ch; font-size: clamp(2rem, 3.4vw, 2.8rem);">
+      Terms & Conditions
+    </h1>
+    <p class="section-lede reveal in" style="max-width: 62ch;">
+      These terms govern your use of the Accutech website and your purchase
+      of products and services from {{ company.legal_name }}. By accessing
+      this site or placing an order with us, you agree to the terms below.
+    </p>
+  </div>
+</section>
+
+<section class="section-panel">
+  <div class="container-fluid-safe">
+    <div class="reveal" style="display:grid; gap: 2.2rem; max-width: 78ch;">
+
+      <div>
+        <h3>1. About Accutech</h3>
+        <p style="color: var(--steel);">
+          This website is operated by {{ company.legal_name }}, based at
+          {{ company.address }}. References to "Accutech", "we", "us" or
+          "our" refer to the company; "you" or "your" refers to the visitor,
+          customer, or user of this site.
+        </p>
+      </div>
+
+      <div>
+        <h3>2. Quotations & Pricing</h3>
+        <p style="color: var(--steel);">
+          Quotations issued by Accutech are valid for the period stated on
+          the quotation document, or 30 days if unspecified. Prices are
+          subject to change without notice for orders placed after a
+          quotation has expired. All prices exclude VAT and freight unless
+          explicitly stated otherwise.
+        </p>
+      </div>
+
+      <div>
+        <h3>3. Orders & Payment</h3>
+        <p style="color: var(--steel);">
+          Orders are confirmed only upon written acknowledgement from
+          Accutech. Payment terms will be agreed at the time of order and
+          set out on the invoice. Accutech reserves the right to withhold
+          shipment or delivery of goods until payment terms are met.
+        </p>
+      </div>
+
+      <div>
+        <h3>4. Delivery</h3>
+        <p style="color: var(--steel);">
+          Delivery dates provided by Accutech are estimates based on
+          information available from our principals and freight partners
+          at the time of order, and are not guaranteed. Accutech is not
+          liable for delays caused by manufacturing, customs, or logistics
+          providers outside our direct control.
+        </p>
+      </div>
+
+      <div>
+        <h3>5. Product Warranty</h3>
+        <p style="color: var(--steel);">
+          Products supplied by Accutech carry the manufacturer's standard
+          warranty unless a separate written warranty is agreed. Warranty
+          claims must be reported promptly with supporting documentation
+          (purchase order, invoice, and description of the fault). Warranty
+          does not cover damage from misuse, improper installation, or
+          unauthorized modification.
+        </p>
+      </div>
+
+      <div>
+        <h3>6. Calibration Services</h3>
+        <p style="color: var(--steel);">
+          Calibration certificates issued by our ISO/IEC 17025:2005 (DAC)
+          accredited laboratory reflect the condition and accuracy of the
+          instrument at the time of testing only. Accutech is not
+          responsible for changes in instrument performance after the
+          instrument leaves our facility.
+        </p>
+      </div>
+
+      <div>
+        <h3>7. Limitation of Liability</h3>
+        <p style="color: var(--steel);">
+          To the extent permitted by UAE law, Accutech's liability for any
+          claim arising from the supply of goods or services is limited to
+          the value of the relevant purchase order. Accutech is not liable
+          for indirect, incidental, or consequential losses, including loss
+          of production or business interruption.
+        </p>
+      </div>
+
+      <div>
+        <h3>8. Intellectual Property</h3>
+        <p style="color: var(--steel);">
+          All content on this website — including text, graphics, logos and
+          the Accutech name and mark — is the property of Accutech or its
+          licensors and may not be copied or reused without written
+          permission.
+        </p>
+      </div>
+
+      <div>
+        <h3>9. Governing Law</h3>
+        <p style="color: var(--steel);">
+          These terms are governed by the laws of the United Arab Emirates,
+          and any disputes arising from them fall under the jurisdiction of
+          the courts of Dubai, UAE.
+        </p>
+      </div>
+
+      <div>
+        <h3>10. Changes to These Terms</h3>
+        <p style="color: var(--steel);">
+          Accutech may update these terms from time to time. The version
+          published on this page at the time of your order or site visit
+          applies.
+        </p>
+      </div>
+
+      <div>
+        <h3>11. Contact</h3>
+        <p style="color: var(--steel);">
+          Questions about these terms can be sent to
+          <a href="mailto:{{ company.email }}">{{ company.email }}</a>
+          or {{ company.phone }}.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}
