@@ -4,15 +4,12 @@
 {% block content %}
 <section class="section" style="padding-top: 160px;">
   <div class="container-fluid-safe">
-    <div class="eyebrow reveal in">Project Experience</div>
+    <div class="eyebrow reveal in">{{ project_eyebrow }}</div>
     <h1 class="reveal in" style="max-width: 22ch; font-size: clamp(2.2rem, 4vw, 3.2rem);">
-      Instrumentation proven across three industry verticals.
+      {{ project_title }}
     </h1>
     <p class="section-lede reveal in" style="max-width: 62ch; font-size: 1.1rem;">
-      Having successfully executed a large number of projects across various
-      industry verticals, we bring reasonable experience across most sectors —
-      a trusted, reliable partner for instrumentation solutions from bidding
-      through commissioning.
+      {{ project_description }}
     </p>
   </div>
 </section>
@@ -22,7 +19,12 @@
     <div class="grid-3">
       {% for p in project_categories %}
       <div class="card-solution reveal">
-        <div class="icon"><i class="bi bi-{{ p.icon }}"></i></div>
+        <!-- <div class="icon"><i class="bi bi-{{ p.icon }}"></i></div> -->
+        <div class="project-image">
+        {% if p.image %}
+            <img src="{{ p.image.url }}" alt="{{ p.title }}">
+        {% endif %}
+        </div>
         <h3>{{ p.title }}</h3>
         <p>{{ p.description }}</p>
       </div>
@@ -35,21 +37,17 @@
   <div class="container-fluid-safe">
     <div class="grid-2 reveal">
       <div>
-        <div class="eyebrow">Regional Reach</div>
-        <h2>Good presence across the UAE and GCC</h2>
+        <div class="eyebrow">{{ project_bottomleft_eyebrow }}</div>
+        <h2>{{ project_bottomleft_title }}</h2>
         <p style="color: var(--steel); max-width: 50ch;">
-          We work closely with leading EPCs, system integrators and end
-          users across the region, supplying a wide instrumentation
-          portfolio backed by strong product knowledge.
+          {{ project_bottomleft_description }}
         </p>
       </div>
       <div>
-        <div class="eyebrow">Delivery Model</div>
-        <h2>Turnkey packages, not just parts</h2>
+        <div class="eyebrow">{{ project_bottomright_eyebrow }}</div>
+        <h2>{{ project_bottomright_title }}</h2>
         <p style="color: var(--steel); max-width: 50ch;">
-          From specification through supply and commissioning, we deliver
-          complete turnkey solutions and packages so your project team can
-          focus on the build, not the sourcing.
+          {{ project_bottomright_description }}
         </p>
       </div>
     </div>
@@ -60,8 +58,8 @@
   <div class="container-fluid-safe">
     <div class="cta-band reveal">
       <div>
-        <h3>Have a project that needs instrumentation?</h3>
-        <p>Share your scope and our engineers will put together a package.</p>
+        <h3>{{ project_bottom_title }}</h3>
+        <p>{{ project_bottom_subtitle }}</p>
       </div>
       <a href="{% url 'core:contact' %}" class="btn-ignition">
         <i class="bi bi-send-fill"></i> Discuss Your Project

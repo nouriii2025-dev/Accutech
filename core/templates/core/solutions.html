@@ -4,14 +4,12 @@
 {% block content %}
 <section class="section" style="padding-top: 160px;">
   <div class="container-fluid-safe">
-    <div class="eyebrow reveal in">Our Solutions</div>
+    <div class="eyebrow reveal in">{{ solution_eyebrow }}</div>
     <h1 class="reveal in" style="max-width: 22ch; font-size: clamp(2.2rem, 4vw, 3.2rem);">
-      Instrumented for every process condition.
+      {{ solution_title }}
     </h1>
     <p class="section-lede reveal in" style="max-width: 62ch; font-size: 1.1rem;">
-      Solutions for pressure, temperature, force and level measurement, flow
-      measurement, calibration and SF6 gas from Accutech are an integral
-      component of our customers' business processes.
+      {{ solution_description }}
     </p>
   </div>
 </section>
@@ -21,12 +19,16 @@
     <div class="grid-2">
       {% for s in solutions %}
       <div class="card-solution reveal">
-        <div class="icon">
-          <i class="bi bi-{% if s.icon == 'gauge' %}speedometer2{% elif s.icon == 'thermometer' %}thermometer-half{% elif s.icon == 'layers' %}layers{% elif s.icon == 'activity' %}activity{% elif s.icon == 'sliders' %}sliders{% else %}wind{% endif %}"></i>
+        <div class="solution-image">
+        {% if s.image %}
+            <img src="{{ s.image.url }}" alt="{{ s.title }}">
+        {% endif %}
         </div>
+    
         <h3>{{ s.title }}</h3>
         <p>{{ s.summary }}</p>
         <p class="detail">{{ s.detail }}</p>
+
       </div>
       {% endfor %}
     </div>
@@ -37,8 +39,8 @@
   <div class="container-fluid-safe">
     <div class="cta-band reveal">
       <div>
-        <h3>Not sure which instrument fits your process?</h3>
-        <p>Tell us your application and our engineers will recommend the right fit.</p>
+        <h3>{{ solution_bottom_title }}</h3>
+        <p>{{ solution_bottom_subtitle }}</p>
       </div>
       <a href="{% url 'core:contact' %}" class="btn-ignition">
         <i class="bi bi-send-fill"></i> Talk to an Engineer

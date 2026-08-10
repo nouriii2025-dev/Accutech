@@ -4,24 +4,12 @@
 {% block content %}
 <section class="section" style="padding-top: 160px;">
   <div class="container-fluid-safe">
-    <div class="eyebrow reveal in">About Accutech</div>
+    <div class="eyebrow reveal in">{{ about_eyebrow }}</div>
     <h1 class="reveal in" style="max-width: 20ch; font-size: clamp(2.2rem, 4vw, 3.2rem);">
-      Accurate Technology, built into plants across the region.
+      {{ about_title }}
     </h1>
     <p class="section-lede reveal in" style="max-width: 62ch; font-size: 1.1rem;">
-      <!-- {{ company.legal_name }} launched in the UAE in 1996 as pressure and
-      temperature specialists. Over the following decades the company grew
-      from a five-person core team into a multi-divisional enterprise of over
-      60 professionals — widening its base across the Middle East through
-      partnerships with leading manufacturers and dealers. -->
-      Accutech, established in 1996 in the vibrant
-      landscape of the United Arab Emirates
-      (UAE), stands at the forefront of engineering
-      solutions. Our specialisation lies in delivering
-      comprehensive instrumentation, analytical,
-      and engineering solutions tailored for the
-      dynamic needs of the process industry in the
-      Middle East & African Sub-continent. 
+      {{ about_description }}
     </p>
   </div>
 </section>
@@ -30,25 +18,18 @@
   <div class="container-fluid-safe">
     <div class="grid-2">
       <div class="reveal">
-        <div class="eyebrow">Our Approach</div>
-        <h2>Comprehensive solutions, start to finish</h2>
+        <div class="eyebrow">{{ left_column_eyebrow }}</div>
+        <h2>{{ left_column_title }}</h2>
         <p style="color: var(--steel); max-width: 52ch;">
-          We firmly believe in offering comprehensive solutions to the
-          industrial project sector in the region. This is made possible by
-          our inherent technical competence, fully backed by our principals,
-          to support our solutions right from the bidding stage through to
-          the commissioning phase.
+          {{ left_column_description }}
         </p>
       </div>
       <div class="reveal">
-        <div class="eyebrow">Why It Matters</div>
+        <div class="eyebrow">{{ right_column_eyebrow }}</div>
+        <h2>{{ right_column_title }}</h2>
         <h2>Reliability your plant can build on</h2>
         <p style="color: var(--steel); max-width: 52ch;">
-          Quality is the essential element in the success of any company —
-          and maintaining it consistently is complex and challenging. Our
-          customers can rest assured that the instruments built into their
-          plants around the world will function reliably and exactly, at all
-          times, so they can focus on their own goals undisturbed.
+          {{ right_column_description }}
         </p>
       </div>
     </div>
@@ -59,39 +40,18 @@
   <div class="container-fluid-safe">
     <div class="section-title-row reveal">
       <div>
-        <div class="eyebrow">Milestones</div>
-        <h2>Three decades in the region</h2>
+        <div class="eyebrow">{{ milestone_eyebrow }}</div>
+        <h2>{{ milestone_title }}</h2>
       </div>
     </div>
     <div class="timeline reveal">
+      {% for m in milestones %}
       <div class="item">
-        <div class="year mono">1996</div>
-        <h4>Founded as pressure & temperature specialists</h4>
-        <p>Accutech begins operations in the UAE with a
-           core team of five, focused on pressure and temperature
-           instrumentation.</p>
+        <div class="year mono">{{ m.year }}</div>
+        <h4>{{ m.title }}</h4>
+        <p>{{ m.description }}</p>
       </div>
-      <div class="item">
-        <div class="year mono">2000s</div>
-        <h4>Multi-divisional growth</h4>
-        <p>The company expands into force, level, flow and calibration
-           services, building a team of over 60 professionals and widening
-           its dealer and retailer network across the Middle East.</p>
-      </div>
-      <div class="item">
-        <div class="year mono">Ongoing</div>
-        <h4>ISO/IEC 17025 & ISO 9001 accreditation</h4>
-        <p>Our in-house calibration facility earns DAC accreditation to
-           ISO/IEC 17025:2005 and BAS certification to ISO 9001:2015,
-           approved by WIKA.</p>
-      </div>
-      <div class="item">
-        <div class="year mono">Today</div>
-        <h4>Confirmed ABB Value Provider</h4>
-        <p>Accutech is confirmed as an ABB Value Provider, and remains the
-           only Trafag partner in the Middle East, alongside its long-standing
-           relationship with WIKA.</p>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -100,13 +60,11 @@
   <div class="container-fluid-safe">
     <div class="section-title-row reveal">
       <div>
-        <div class="eyebrow">Environment</div>
-        <h2>Operating responsibly</h2>
+        <div class="eyebrow">{{ last_content_eyebrow }}</div>
+        <h2>{{ last_content_title }}</h2>
       </div>
       <p class="section-lede">
-        All our activities are reviewed for their effect on the environment,
-        from pollution to waste disposal. We aim to contribute positively to
-        a good working environment, both today and in future.
+        {{ last_content_description }}
       </p>
     </div>
   </div>

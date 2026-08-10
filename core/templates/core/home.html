@@ -6,15 +6,14 @@
 <section class="hero">
   <div class="hero-grid">
     <div class="reveal in">
-      <div class="eyebrow">Est. 1996 · Dubai, UAE</div>
-      <h1>
+      <div class="eyebrow">{{ hero_eyebrow }}</div>
+      <!-- <h1>
         Precision instrumentation,<br>
         engineered like it's <span class="accent">redline‑tested</span>.
-      </h1>
+      </h1> -->
+      <h1>{{ hero_title }}</h1>
       <p class="hero-lede">
-        Accutech delivers pressure, temperature, force, level, flow and SF6 gas
-        measurement solutions to the region's industrial projects — backed by
-        an in-house calibration lab and partnerships with ABB, WIKA and Trafag.
+        {{ hero_description }}
       </p>
       <div class="hero-actions">
         <a href="{% url 'core:contact' %}" class="btn-ignition">
@@ -81,14 +80,10 @@
   <div class="container-fluid-safe">
     <div class="section-title-row reveal">
       <div>
-        <div class="eyebrow">What We Deliver</div>
-        <h2>Measurement solutions built for the plant floor</h2>
+        <div class="eyebrow">{{ solutions_eyebrow }}</div>
+        <h2>{{ solutions_title }}</h2>
       </div>
-      <p class="section-lede">
-        From the bidding stage through commissioning, our solutions integrate
-        into your customers' business processes and keep running, reliably,
-        at every pressure and temperature the plant can throw at them.
-      </p>
+      <p class="section-lede">{{ solutions_description }}</p>
     </div>
 
     <div class="grid-3">
@@ -110,18 +105,16 @@
     <div class="grid-2 reveal">
       <div class="card-solution">
         <div class="icon"><i class="bi bi-boxes"></i></div>
-        <h3>Full Product Catalog</h3>
-        <p>Nine categories, from pressure gauges to hygienic process valves,
-           sourced from the world's leading instrumentation brands.</p>
+        <h3>{{ product_card_title }}</h3>
+        <p>{{ product_card_description }}</p>
         <a href="{% url 'core:products' %}" class="btn-outline-steel" style="margin-top:1rem; padding:10px 20px; font-size:0.85rem;">
           Browse Products <i class="bi bi-arrow-right"></i>
         </a>
       </div>
       <div class="card-solution">
         <div class="icon"><i class="bi bi-diagram-3"></i></div>
-        <h3>Project Experience</h3>
-        <p>MEP & district cooling, power/water/desalination, and oil & gas —
-           delivered as turnkey instrumentation packages.</p>
+        <h3>{{ project_card_title }}</h3>
+        <p>{{ project_card_description }}</p>
         <a href="{% url 'core:projects' %}" class="btn-outline-steel" style="margin-top:1rem; padding:10px 20px; font-size:0.85rem;">
           View Projects <i class="bi bi-arrow-right"></i>
         </a>
@@ -133,7 +126,7 @@
 <section class="section-panel">
   <div class="container-fluid-safe">
     <div class="dial-divider reveal">
-      <span class="eyebrow" style="margin:0;">Trusted Brand Partners</span>
+      <span class="eyebrow" style="margin:0;">{{ brand_card_eyebrow }}</span>
       <span class="line"></span>
     </div>
     <div class="brand-strip">
@@ -152,17 +145,16 @@
   <div class="container-fluid-safe">
     <div class="section-title-row reveal">
       <div>
-        <div class="eyebrow">Quality You Can Audit</div>
-        <h2>Calibration you can trace, every time</h2>
+        <div class="eyebrow">{{ certificate_card_eyebrow }}</div>
+        <h2>{{ certificate_card_title }}</h2>
       </div>
       <p class="section-lede">
-        Our in-house lab keeps every instrument we touch inside spec — with the
-        paperwork to prove it.
+        {{ certificate_card_description }}
       </p>
     </div>
     <ul class="cert-list reveal">
       {% for c in certifications %}
-      <li><i class="bi bi-patch-check-fill"></i> {{ c }}</li>
+      <li><i class="bi bi-patch-check-fill"></i> {{ c.name }}</li>
       {% endfor %}
     </ul>
   </div>
@@ -172,8 +164,8 @@
   <div class="container-fluid-safe">
     <div class="cta-band reveal">
       <div>
-        <h3>Need instrumentation specified for a live project?</h3>
-        <p>Send us your process conditions — our engineers will size and quote it.</p>
+        <h3>{{ contact_card_title }}</h3>
+        <p>{{ contact_card_subtitle }}</p>
       </div>
       <a href="{% url 'core:contact' %}" class="btn-ignition">
         <i class="bi bi-send-fill"></i> Start a Conversation
