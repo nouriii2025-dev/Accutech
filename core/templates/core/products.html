@@ -17,7 +17,7 @@
 <!-- =======================================================
      2) PRODUCTS PAGE — category filter + grid + modal
 ======================================================== -->
-<section class="section" style="padding-top: 160px;">
+<section class="section" style="padding-top: 100px;">
   <div class="container-fluid-safe">
     <div class="eyebrow reveal in">Our Products</div>
     <h1 class="reveal in" style="max-width: 22ch; font-size: clamp(2.2rem, 4vw, 3.2rem);">
@@ -41,6 +41,12 @@
       <select id="psSubcategory"><option value="">All Sub Categories</option></select>
     </div>
     <div class="ps-field">
+    <label for="psProductType">Product Type</label>
+    <select id="psProductType">
+        <option value="">All Product Types</option>
+    </select>
+    </div>
+    <div class="ps-field">
       <label>Brands</label>
       <div class="ps-brand-list" id="psBrandList"></div>
     </div>
@@ -56,6 +62,26 @@
   </main>
 </div>
 
+        <!-- =========================
+             LOAD MORE
+        ========================== -->
+
+        <div
+            class="ps-load-more-wrap"
+            id="psLoadMoreWrap"
+            style="display:none;">
+            <button
+                type="button"
+                class="ps-load-more"
+                id="psLoadMore">
+                Load More
+            </button>
+        </div>
+
+    </main>
+
+</div>
+
 <!-- Product detail modal -->
 <div class="ps-modal-overlay" id="psModalOverlay">
   <div class="ps-modal">
@@ -68,11 +94,37 @@
     </div>
     <div class="ps-modal-body">
       <div>
-        <div class="ps-modal-img">
+        <!-- <div class="ps-modal-img">
           <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
+        </div> -->
+        <div class="ps-modal-img">
+    <img
+        id="psModalImage"
+        src=""
+        alt=""
+        style="display: none;"
+    >
+
+    <div id="psModalImagePlaceholder">
+        <svg viewBox="0 0 24 24" fill="none">
+            <circle
+                cx="12"
+                cy="12"
+                r="9"
+                stroke="currentColor"
+                stroke-width="1.5"
+            />
+            <path
+                d="M12 7v5l3 2"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+            />
+        </svg>
+    </div>
+</div>
         <div class="ps-modal-actions">
-          <a href="#quote" class="ps-btn ps-btn-primary">Request a quote</a>
+          <a href="{% url 'core:contact' %}" class="ps-btn ps-btn-primary">Request a quote</a>
           <a href="#datasheet" class="ps-btn ps-btn-ghost">Download datasheet</a>
         </div>
       </div>

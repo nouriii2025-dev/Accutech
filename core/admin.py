@@ -73,3 +73,89 @@ class TermsandConditionsAdmin(admin.ModelAdmin):
     list_filter = ("is_active",)
     search_fields = ("title", "description")
 
+
+@admin.register(ProductCategory)
+class ProductCategoryAdmin(admin.ModelAdmin):
+    list_display = (
+        "name",
+        "slug",
+        "order",
+        "is_active",
+    )
+    list_filter = ("is_active",)
+    search_fields = ("name",)
+    ordering = ("order", "name")
+
+
+@admin.register(ProductSubCategory)
+class ProductSubCategoryAdmin(admin.ModelAdmin):
+    list_display = (
+        "name",
+        "category",
+        "order",
+        "is_active",
+    )
+    list_filter = (
+        "category",
+        "is_active",
+    )
+    search_fields = (
+        "name",
+        "category__name",
+    )
+    ordering = (
+        "category",
+        "order",
+        "name",
+    )
+
+
+@admin.register(ProductType)
+class ProductTypeAdmin(admin.ModelAdmin):
+    list_display = (
+        "name",
+        "subcategory",
+        "order",
+        "is_active",
+    )
+    list_filter = (
+        "subcategory__category",
+        "is_active",
+    )
+    search_fields = (
+        "name",
+        "subcategory__name",
+        "subcategory__category__name",
+    )
+    ordering = (
+        "subcategory",
+        "order",
+        "name",
+    )
+
+
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = (
+        "name",
+        "brand",
+        "product_type",
+        "order",
+        "is_active",
+    )
+    list_filter = (
+        "brand",
+        "product_type__subcategory__category",
+        "is_active",
+    )
+    search_fields = (
+        "name",
+        "brand__name",
+        "product_type__name",
+        "product_type__subcategory__name",
+    )
+    ordering = (
+        "product_type",
+        "order",
+        "name",
+    )

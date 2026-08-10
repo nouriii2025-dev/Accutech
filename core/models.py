@@ -120,4 +120,114 @@ class TermsandConditions(models.Model):
     def __str__(self):
         return self.title
 
+class ProductCategory(models.Model):
+    name = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=220, unique=True)
+    icon = models.CharField(max_length=100, blank=True)
+    order = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ["order", "name"]
+        verbose_name = "Product Category"
+        verbose_name_plural = "Product Categories"
+
+    def __str__(self):
+        return self.name
+
+
+class ProductSubCategory(models.Model):
+    category = models.ForeignKey(
+        ProductCategory,
+        on_delete=models.CASCADE,
+        related_name="subcategories"
+    )
+    name = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=220)
+    order = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ["order", "name"]
+        unique_together = ("category", "slug")
+        verbose_name = "Product Subcategory"
+        verbose_name_plural = "Product Subcategories"
+
+    def __str__(self):
+        return f"{self.category.name} → {self.name}"
+
+
+class ProductType(models.Model):
+    subcategory = models.ForeignKey(
+        ProductSubCategory,
+        on_delete=models.CASCADE,
+        related_name="product_types"
+    )
+    name = models.CharField(max_length=250)
+    slug = models.SlugField(max_length=270)
+    order = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ["order", "name"]
+        unique_together = ("subcategory", "slug")
+        verbose_name = "Product Type"
+        verbose_name_plural = "Product Types"
+
+    def __str__(self):
+        return (
+            f"{self.subcategory.category.name} → "
+            f"{self.subcategory.name} → {self.name}"
+        )
+
+
+class Product(models.Model):
+    product_type = models.ForeignKey(
+        ProductType,
+        on_delete=models.CASCADE,
+        related_name="products"
+    )
+
+    name = models.CharField(max_length=300)
+    slug = models.SlugField(max_length=320)
+
+    brand = models.ForeignKey(
+        Brand,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="products"
+    )
+
+    short_description = models.TextField(blank=True)
+    description = models.TextField(blank=True)
+
+    image = models.ImageField(
+        upload_to="products/",
+        blank=True,
+        null=True
+    )
+
+    datasheet = models.FileField(
+        upload_to="product_datasheets/",
+        blank=True,
+        null=True
+    )
+
+    specifications = models.JSONField(
+        default=dict,
+        blank=True
+    )
+
+    order = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ["order", "name"]
+        unique_together = ("product_type", "slug")
+        verbose_name = "Product"
+        verbose_name_plural = "Products"
+
+    def __str__(self):
+        return self.name
 
