@@ -17,9 +17,9 @@ class Site_Home_ContentAdmin(admin.ModelAdmin):
 
 @admin.register(Brand)
 class BrandAdmin(admin.ModelAdmin):
-    list_display = ("name", "role", "is_active")
+    list_display = ("name", "logo", "is_active")
     list_filter = ("is_active",)
-    search_fields = ("name", "role", "note")
+    search_fields = ("name",)
 
 @admin.register(Certification)
 class CertificationAdmin(admin.ModelAdmin):
@@ -72,3 +72,4 @@ class TermsandConditionsAdmin(admin.ModelAdmin):
     list_display = ("title", "description", "order", "is_active")
     list_filter = ("is_active",)
     search_fields = ("title", "description")
+

@@ -36,8 +36,7 @@ class Site_Home_Content(models.Model):
         
 class Brand(models.Model):
     name = models.CharField(max_length=150)
-    role = models.CharField(max_length=200, blank=True)
-    note = models.TextField(blank=True)
+    logo = models.ImageField(upload_to="brands/", default="brands/default-logo.png")
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
@@ -120,3 +119,5 @@ class TermsandConditions(models.Model):
 
     def __str__(self):
         return self.title
+
+

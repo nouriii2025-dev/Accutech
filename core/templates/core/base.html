@@ -36,7 +36,8 @@
           <li><a href="{% url 'core:products' %}">Products</a></li>
           <li><a href="{% url 'core:solutions' %}">Solutions</a></li>
           <li><a href="{% url 'core:projects' %}">Projects</a></li>
-          <li><a href="{% url 'core:brands' %}">Brands</a></li>
+          <!-- <li><a href="{% url 'core:brands' %}">Brands</a></li> -->
+          <li><a href="{% url 'core:calibration' %}">Calibration</a></li>
           <li><a href="{% url 'core:contact' %}" class="nav-cta">Get a Quote</a></li>
         </ul>
       </nav>
@@ -74,9 +75,9 @@
             <li><a href="{% url 'core:products' %}">Products</a></li>
             <li><a href="{% url 'core:solutions' %}">Solutions</a></li>
             <li><a href="{% url 'core:projects' %}">Projects</a></li>
-            <li><a href="{% url 'core:brands' %}">Brand Partners</a></li>
             <li><a href="{% url 'core:about' %}">About Accutech</a></li>
             <li><a href="{% url 'core:contact' %}">Contact</a></li>
+            <li><a href="{% url 'core:terms' %}">Terms & Conditions</a></li>
           </ul>
         </div>
         <div>
@@ -90,7 +91,7 @@
       </div>
       <div class="footer-bottom">
         <span>&copy; {% now "Y" %} Accutech Middle East FZCO. All rights reserved.</span>
-        <span><a href="{% url 'core:terms' %}" style="color: var(--steel-dim);">Terms &amp; Conditions</a> · Design & Powered By Accutech IT Team</span>
+        <span> Design & Powered By Accutech IT Team</span>
       </div>
     </div>
   </footer>

@@ -123,7 +123,7 @@
   </div>
 </section>
 
-<section class="section-panel">
+<!-- <section class="section-panel">
   <div class="container-fluid-safe">
     <div class="dial-divider reveal">
       <span class="eyebrow" style="margin:0;">{{ brand_card_eyebrow }}</span>
@@ -139,6 +139,39 @@
       {% endfor %}
     </div>
   </div>
+</section> -->
+<section class="brands-section">
+    <div class="container">
+
+        <div class="section-heading">
+            <span></span>
+            <p>TRUSTED BRAND PARTNERS</p>
+        </div>
+
+        <div class="brands-marquee">
+            <div class="brands-track">
+
+                {% for brand in brands %}
+                    {% if brand.is_active %}
+                        <div class="brand-item">
+                            <img src="{{ brand.logo.url }}" alt="{{ brand.name }}">
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+                <!-- Duplicate logos for seamless animation -->
+                {% for brand in brands %}
+                    {% if brand.is_active %}
+                        <div class="brand-logo">
+                            <img src="{{ brand.logo.url }}" alt="{{ brand.name }}">
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+            </div>
+        </div>
+
+    </div>
 </section>
 
 <section class="section-panel">

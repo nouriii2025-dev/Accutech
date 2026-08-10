@@ -2,16 +2,7 @@ from django.contrib import messages
 from django.shortcuts import redirect, render
 from .models import *
 
-from .content import (
-    BRAND_ROSTER,
-    BRANDS,
-    CERTIFICATIONS,
-    COMPANY,
-    PRODUCT_CATEGORIES,
-    PROJECT_CATEGORIES,
-    SOLUTIONS,
-    STATS,
-)
+from .content import *
 from .forms import ContactForm
 
 
@@ -162,7 +153,11 @@ def terms(request):
         }
     return render(request, "core/terms.html", context)
 
-
+def calibration(request):
+    context = {
+        "company": COMPANY,
+    }
+    return render(request, "core/calibration.html", context)
 
 def contact(request):
     if request.method == "POST":

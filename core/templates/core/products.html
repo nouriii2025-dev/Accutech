@@ -2,65 +2,88 @@
 {% block title %}Products — Full Instrumentation Catalog | Accutech{% endblock %}
 
 {% block content %}
+<nav class="ps-nav">
+  <div class="ps-nav-inner">
+    <div class="ps-nav-item" id="psNavItem">
+      <button class="ps-nav-trigger" id="psNavTrigger" aria-expanded="false">
+        Products
+        <svg viewBox="0 0 12 8" fill="none"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2"/></svg>
+      </button>
+      <div class="ps-mega" id="psMega"><div class="ps-mega-grid" id="psMegaGrid"></div></div>
+    </div>
+  </div>
+</nav>
+
+<!-- =======================================================
+     2) PRODUCTS PAGE — category filter + grid + modal
+======================================================== -->
 <section class="section" style="padding-top: 160px;">
   <div class="container-fluid-safe">
-    <div class="eyebrow reveal in">Product Range</div>
+    <div class="eyebrow reveal in">Our Products</div>
     <h1 class="reveal in" style="max-width: 22ch; font-size: clamp(2.2rem, 4vw, 3.2rem);">
-      Every category your process needs, under one roof.
+      Product Range
     </h1>
     <p class="section-lede reveal in" style="max-width: 62ch; font-size: 1.1rem;">
-      From pressure gauges to precision calibrators, valves, fittings and
-      hygienic process equipment — our product range spans nine major
-      categories built from the world's leading instrumentation brands.
+      Explore our comprehensive catalog of pressure, temperature, flow, and calibration instruments. Use the filters to narrow down your search by category, sub-category, and brand.
     </p>
   </div>
 </section>
 
-<section class="section-panel">
-  <div class="container-fluid-safe">
-    <div class="grid-3">
-      {% for cat in product_categories %}
-      <div class="card-solution reveal">
-        <div class="icon"><i class="bi bi-{{ cat.icon }}"></i></div>
-        <h3>{{ cat.title }}</h3>
-        <ul style="list-style:none; margin: 0.6rem 0 0; padding:0; display:grid; gap:0.4rem;">
-          {% for sub in cat.subcategories %}
-          <li style="color: var(--steel); font-size: 0.88rem; display:flex; gap:0.5rem; align-items:baseline;">
-            <span style="color: var(--ignition);">&raquo;</span> {{ sub }}
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-      {% endfor %}
+<div class="ps-wrap ps-body">
+  <aside class="ps-filters">
+    <h3>Filters</h3>
+    <div class="ps-field">
+      <label for="psCategory">Product Category</label>
+      <select id="psCategory"><option value="">All Categories</option></select>
     </div>
-  </div>
-</section>
+    <div class="ps-field">
+      <label for="psSubcategory">Sub Category</label>
+      <select id="psSubcategory"><option value="">All Sub Categories</option></select>
+    </div>
+    <div class="ps-field">
+      <label>Brands</label>
+      <div class="ps-brand-list" id="psBrandList"></div>
+    </div>
+    <button class="ps-clear" id="psClear">Clear all filters</button>
+  </aside>
 
-<section class="section">
-  <div class="container-fluid-safe">
-    <div class="dial-divider reveal">
-      <span class="eyebrow" style="margin:0;">Brands We Carry</span>
-      <span class="line"></span>
+  <main>
+    <div class="ps-toolbar">
+      <div class="ps-count"><b id="psResultCount">0</b> products found</div>
     </div>
-    <div class="reveal" style="display:flex; flex-wrap:wrap; gap: 0.7rem;">
-      {% for name in brand_roster %}
-      <span class="mono" style="border:1px solid var(--line-strong); background:var(--bg-panel-2); padding:8px 14px; border-radius:20px; font-size:0.82rem; color:var(--chrome);">{{ name }}</span>
-      {% endfor %}
-    </div>
-  </div>
-</section>
+    <div class="ps-grid" id="psGrid"></div>
+    <div class="ps-empty" id="psEmpty" style="display:none;">No products match the selected filters.</div>
+  </main>
+</div>
 
-<section class="section-panel">
-  <div class="container-fluid-safe">
-    <div class="cta-band reveal">
+<!-- Product detail modal -->
+<div class="ps-modal-overlay" id="psModalOverlay">
+  <div class="ps-modal">
+    <div class="ps-modal-head">
       <div>
-        <h3>Looking for a specific part number?</h3>
-        <p>Send us the spec sheet or model number and we'll confirm stock, lead time and pricing.</p>
+        <div class="ps-modal-brand" id="psModalBrand"></div>
+        <h2 id="psModalTitle"></h2>
       </div>
-      <a href="{% url 'core:contact' %}" class="btn-ignition">
-        <i class="bi bi-send-fill"></i> Request a Quote
-      </a>
+      <button class="ps-modal-close" id="psModalClose" aria-label="Close">&times;</button>
+    </div>
+    <div class="ps-modal-body">
+      <div>
+        <div class="ps-modal-img">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="ps-modal-actions">
+          <a href="#quote" class="ps-btn ps-btn-primary">Request a quote</a>
+          <a href="#datasheet" class="ps-btn ps-btn-ghost">Download datasheet</a>
+        </div>
+      </div>
+      <div>
+        <div class="ps-modal-path" id="psModalPath"></div>
+        <div class="ps-modal-desc" id="psModalDesc"></div>
+        <table class="ps-spec-table" id="psModalSpecs"></table>
+      </div>
     </div>
   </div>
-</section>
+</div>
+
+
 {% endblock %}
