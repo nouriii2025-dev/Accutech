@@ -5,8 +5,8 @@
 <section class="section" style="padding-top: 160px;">
   <div class="container-fluid-safe">
     <div class="eyebrow reveal in">Get In Touch</div>
-    <h1 class="reveal in" style="max-width: 20ch; font-size: clamp(2.2rem, 4vw, 3.2rem);">
-      Tell us about your process, we'll spec the instrument.
+    <h1 class="reveal in">
+      Contact Us
     </h1>
 
     {% if messages %}
@@ -15,78 +15,92 @@
       {% endfor %}
     {% endif %}
 
-    <div class="grid-2" style="align-items: start; margin-top: 2rem;">
-      <form method="post" class="reveal in" novalidate>
-        {% csrf_token %}
-        <div style="display:grid; gap: 1.2rem;">
-          <div>
-            {{ form.name.label_tag }}
-            {{ form.name }}
+    <div class="contact-grid reveal in">
+
+      <!-- LEFT: Send a Message -->
+      <div class="contact-card">
+        <div class="contact-card-eyebrow"><span></span>Send a Message</div>
+
+        <form method="post" novalidate>
+          {% csrf_token %}
+
+          <div class="contact-form-row">
+            <div class="contact-field">
+              {{ form.name.label_tag }}
+              {{ form.name }}
+            </div>
+            <div class="contact-field">
+              {{ form.email.label_tag }}
+              {{ form.email }}
+            </div>
           </div>
-          <div>
-            {{ form.company.label_tag }}
-            {{ form.company }}
+
+          <div class="contact-form-row">
+            <div class="contact-field">
+              {{ form.phone.label_tag }}
+              {{ form.phone }}
+            </div>
+            <div class="contact-field">
+              {{ form.company.label_tag }}
+              {{ form.company }}
+            </div>
           </div>
-          <div>
-            {{ form.email.label_tag }}
-            {{ form.email }}
-          </div>
-          <div>
-            {{ form.phone.label_tag }}
-            {{ form.phone }}
-          </div>
-          <div>
+
+          <div class="contact-field">
             {{ form.enquiry_type.label_tag }}
             {{ form.enquiry_type }}
           </div>
-          <div>
+
+          <div class="contact-field">
             {{ form.message.label_tag }}
             {{ form.message }}
           </div>
-          <button type="submit" class="btn-ignition" style="justify-self: start;">
-            <i class="bi bi-send-fill"></i> Send Enquiry
-          </button>
-        </div>
-      </form>
 
-      <div class="contact-info-card reveal in">
-        <div class="row-item">
-          <i class="bi bi-geo-alt-fill"></i>
-          <div>
-            <strong>Head Office</strong>
-            <span>{{ company.address }}</span>
+          <button type="submit" class="btn-ignition contact-submit">
+            <i class="bi bi-send-fill"></i> Send Message
+          </button>
+        </form>
+      </div>
+
+      <!-- RIGHT: Reach Us Directly -->
+      <div class="contact-side">
+        <div class="contact-card">
+          <div class="contact-card-eyebrow"><span></span>Reach Us Directly</div>
+
+          <div class="info-table">
+            <div class="info-row">
+              <div class="info-label">Address</div>
+              <div class="info-value">{{ company.address }}</div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">Warehouse</div>
+              <div class="info-value">{{ company.warehouse|default:"Warehouse No. 1, High Bay" }}</div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">Phone</div>
+              <div class="info-value"><a href="tel:+97143207944">{{ company.phone }}</a></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">Email</div>
+              <div class="info-value"><a href="mailto:{{ company.email }}">{{ company.email }}</a></div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">Hours</div>
+              <div class="info-value">{{ company.working_hours }}</div>
+            </div>
           </div>
         </div>
-        <div class="row-item">
-          <i class="bi bi-telephone-fill"></i>
-          <div>
-            <strong>Phone</strong>
-            <span><a href="tel:+97143207944">{{ company.phone }}</a></span>
-          </div>
-        </div>
-        <div class="row-item">
-          <i class="bi bi-envelope-fill"></i>
-          <div>
-            <strong>Email</strong>
-            <span><a href="mailto:{{ company.email }}">{{ company.email }}</a></span>
-          </div>
-        </div>
-        <div class="row-item">
-          <i class="bi bi-clock-fill"></i>
-          <div>
-            <strong>Working Hours</strong>
-            <span>{{ company.working_hours }}</span>
-          </div>
-        </div>
-        <div class="row-item">
-          <i class="bi bi-chat-dots-fill"></i>
-          <div>
-            <strong>Quick Answers</strong>
-            <span>Use the assistant in the bottom-right corner for instant
-              answers on solutions, calibration, or brand partners.</span>
-          </div>
+
+        <div class="contact-map">
+          <iframe
+            src="https://www.google.com/maps?q=Dubai+Silicon+Oasis,+Dubai,+UAE&output=embed"
+            width="100%" height="100%" style="border:0;"
+            allowfullscreen loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
         </div>
       </div>
+
     </div>
   </div>
 </section>

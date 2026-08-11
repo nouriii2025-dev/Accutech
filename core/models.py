@@ -45,6 +45,7 @@ class Brand(models.Model):
 class Certification(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True)
+    image = models.ImageField(upload_to="site_content/",blank=True,null=True)
 
     def __str__(self):
         return self.name
@@ -62,6 +63,7 @@ class About_Milestone_Content(models.Model):
     description = models.TextField()
     order = models.PositiveIntegerField(default=0)
     is_active = models.BooleanField(default=True)
+    image = models.ImageField(upload_to="site_content/",blank=True,null=True)
 
     class Meta:
         ordering = ["order"]
@@ -89,7 +91,7 @@ class Solution(models.Model):
 
 class Site_Project_Content(models.Model):
     key = models.CharField(max_length=100, unique=True)
-    value = models.TextField()
+    value = models.TextField()  
 
     def __str__(self):
         return self.key
@@ -116,6 +118,7 @@ class TermsandConditions(models.Model):
     description = models.TextField(blank=True)
     order = models.PositiveIntegerField(default=0)
     is_active = models.BooleanField(default=True)
+    image = models.ImageField(upload_to="site_content/",blank=True,null=True)
 
     def __str__(self):
         return self.title

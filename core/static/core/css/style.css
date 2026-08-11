@@ -2147,8 +2147,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 }
 
-
-
 /* =========================================================
    BRAND PARTNER LOGOS
 ========================================================= */
@@ -2192,3 +2190,106 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     outline: none;
     box-shadow: none;
 }
+
+/* =========================================================================
+   CONTACT PAGE — split card layout
+   ========================================================================= */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1.5rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+.contact-card {
+  background: var(--bg-panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+}
+
+.contact-card-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ignition);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  margin-bottom: 1.6rem;
+}
+.contact-card-eyebrow span {
+  width: 28px;
+  height: 2px;
+  background: var(--ignition);
+  display: inline-block;
+}
+
+.contact-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+@media (max-width: 560px) {
+  .contact-form-row { grid-template-columns: 1fr; }
+}
+
+.contact-field { margin-bottom: 1.2rem; }
+.contact-field input,
+.contact-field select,
+.contact-field textarea { width: 100%; }
+.contact-field textarea { min-height: 140px; resize: vertical; }
+
+.contact-submit {
+  width: 100%;
+  justify-content: center;
+  margin-top: 0.4rem;
+}
+
+.contact-side { display: grid; gap: 1.5rem; }
+
+.info-table { display: grid; }
+.info-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1rem;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.info-row:last-child { border-bottom: none; }
+.info-label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--steel-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.info-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--chrome);
+  font-size: 1rem;
+}
+.info-value a { color: var(--chrome); }
+.info-value a:hover { color: var(--ignition); }
+
+.contact-map {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  height: 260px;
+  box-shadow: var(--shadow);
+}
+.contact-map iframe { display: block; width: 100%; height: 100%; }
+
+@media (max-width: 560px) {
+  .info-row { grid-template-columns: 1fr; gap: 0.3rem; }
+}
+
+
