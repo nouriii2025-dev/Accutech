@@ -1348,45 +1348,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 }
 
-  /* ===================== MODAL (product detail) ===================== */
-  /* .ps-modal-overlay{
-    position:fixed;inset:0;background:rgba(14,20,28,.55);
-    display:none;align-items:center;justify-content:center;z-index:200;padding:20px;
-  }
-  .ps-modal-overlay.open{display:flex;}
-  .ps-modal{
-    background:#fff;border-radius:10px;max-width:760px;width:100%;max-height:88vh;overflow-y:auto;
-    box-shadow:0 30px 70px rgba(0,0,0,.35);
-  }
-  .ps-modal-head{
-    display:flex;justify-content:space-between;align-items:flex-start;gap:16px;
-    padding:22px 24px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff;
-  }
-  .ps-modal-close{background:none;border:none;font-size:22px;color:var(--muted);cursor:pointer;line-height:1;}
-  .ps-modal-body{padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-  @media (max-width:600px){.ps-modal-body{grid-template-columns:1fr;}}
-  .ps-modal-img{
-    height:220px;border-radius:8px;background:linear-gradient(135deg,#eef2f6,#dfe6ec);
-    display:flex;align-items:center;justify-content:center;color:var(--steel);
-  }
-  .ps-modal-img svg{width:70px;height:70px;opacity:.5;}
-  .ps-modal-brand{font-size:12px;font-weight:700;color:var(--amber-dark);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;}
-  .ps-modal h2{font-size:26px;color:var(--navy);}
-  .ps-modal-path{font-size:12.5px;color:var(--muted);margin:6px 0 14px;}
-  .ps-modal-desc{font-size:14px;line-height:1.6;color:var(--text);margin-bottom:16px;}
-  .ps-spec-table{width:100%;border-collapse:collapse;font-size:13.5px;}
-  .ps-spec-table td{padding:7px 0;border-bottom:1px solid var(--line);}
-  .ps-spec-table td:first-child{color:var(--muted);width:42%;}
-  .ps-spec-table td:last-child{color:var(--text);font-weight:500;}
-  .ps-modal-actions{display:flex;gap:10px;margin-top:18px;}
-  .ps-btn{padding:11px 18px;border-radius:6px;font-size:13.5px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block;text-align:center;}
-  .ps-btn-primary{background:var(--amber);border:none;color:#fff;}
-  .ps-btn-primary:hover{background:var(--amber-dark);}
-  .ps-btn-ghost{background:none;border:1px solid var(--line);color:var(--navy);} */
-
-/* =========================
-   PRODUCT DETAIL MODAL
-   ========================= */
 
 .ps-modal-overlay {
     position: fixed;

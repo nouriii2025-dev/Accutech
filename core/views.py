@@ -38,7 +38,6 @@ def home(request):
         "brands": Brand.objects.filter(is_active=True),
         "stats": STATS,
         "certifications": Certification.objects.all(),
-        "company": COMPANY,
     }
     return render(request, "core/home.html", context)
 
@@ -69,7 +68,6 @@ def about(request):
 
         "stats": STATS,
         "certifications": CERTIFICATIONS,
-        "company": COMPANY,
     }
     return render(request, "core/about.html", context)
 
@@ -89,28 +87,24 @@ def solutions(request):
         "solution_bottom_subtitle": content.get("solution_bottom_card_subtitle"),
 
         "solutions": Solution.objects.filter(is_active=True).order_by("order"),
-        "company": COMPANY,
     }
     return render(request, "core/solutions.html", context)
 
 
-# def products(request):
-#     context = {
-#         "product_categories": PRODUCT_CATEGORIES,
-#         "brand_roster": BRAND_ROSTER,
-#         "company": COMPANY,
-#     }
-#     return render(request, "core/products.html", context)
+def get_products_content():
+    return {
+        item.key: item.value
+        for item in Site_Product_Content.objects.all()
+    }
 def products(request):
+    content = get_products_content()
     context = {
-        "company": COMPANY,
+        "product_eyebrow": content.get("product_eyebrow"),
+        "product_title": content.get("product_main_title"),
+        "product_description": content.get("product_top_description"),
     }
 
-    return render(
-        request,
-        "core/products.html",
-        context
-    )
+    return render(request,"core/products.html",context)
 
 def product_data(request):
     categories = ProductCategory.objects.filter(
@@ -173,7 +167,7 @@ def product_data(request):
                 if product.brand
                 else ""
             ),
-
+            "model_number": product.model_number,
             "category": product.product_type.subcategory.category.name,
             "category_slug": product.product_type.subcategory.category.slug,
 
@@ -228,7 +222,6 @@ def projects(request):
         "project_bottom_subtitle": content.get("project_bottom_card_subtitle"),
 
         "project_categories": Project.objects.filter(is_active=True).order_by("order"),
-        "company": COMPANY,
     }
     return render(request, "core/projects.html", context)
 
@@ -237,7 +230,6 @@ def brands(request):
     context = {
         "brands": BRANDS,
         "brand_roster": BRAND_ROSTER,
-        "company": COMPANY,
     }
     return render(request, "core/brands.html", context)
 
@@ -253,7 +245,6 @@ def terms(request):
         "terms_title": content.get("terms_title"),  
         "terms_description": content.get("terms_description"),
         "terms": TermsandConditions.objects.filter(is_active=True).order_by("order"),
-        "company": COMPANY,
         }
     return render(request, "core/terms.html", context)
 
@@ -266,12 +257,13 @@ def get_calibration_content():
 def calibration(request):
     content = get_calibration_content()
     context = {
-        "company": COMPANY,
         "calibration_eyebrow": content.get("calibration_eyebrow"),
         "calibration_top_title": content.get("calibration_top_title"),
         "calibration_top_description": content.get("calibration_top_description"),
         "calibration_middle_title": content.get("calibration_middle_title"),
         "calibration_bottom_title": content.get("calibration_bottom_title"),
+        "calibration_services": Calibration_Service.objects.filter(is_active=True).order_by("order"),
+        "calibration_capabilities": Calibration_Capabilities.objects.filter(is_active=True).order_by("order"),
     }
     return render(request, "core/calibration.html", context)
 
@@ -289,7 +281,15 @@ def contact(request):
     else:
         form = ContactForm()
 
-    context = {"form": form, "company": COMPANY}
+    context = {
+        "form": form,
+        }
     return render(request, "core/contact.html", context)
+
+
+
+
+
+
 
 

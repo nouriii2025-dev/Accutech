@@ -59,14 +59,11 @@
           <a href="{% url 'core:home' %}" style="display:inline-flex; align-items:center; margin-bottom: 0.8rem;">
             <img src="{% static 'core/img/logo.png' %}" alt="Accutech logo" class="brand-logo"
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
-            <span class="brand-logo-fallback" style="display:none;">
-              ACCUTECH<span class="dot">.</span>
-            </span>
+            <span class="brand-logo-fallback" style="display:none;">{{ base_title }}</span>
           </a>
-          <h5>Accutech</h5>
+          <h5>{{ base_title }}</h5>
           <p style="color: var(--steel); max-width: 42ch; font-size: 0.93rem;">
-            Comprehensive measurement, calibration and instrumentation solutions
-            for industrial projects across the Middle East since 1996.
+            {{ base_description }}
           </p>
         </div>
         <div>
@@ -83,15 +80,15 @@
         <div>
           <h5>Contact</h5>
           <ul>
-            <li><i class="bi bi-geo-alt"></i> Dubai Silicon Oasis, Dubai, UAE</li>
-            <li><a href="tel:+97143207944">+971 4 320 7944</a></li>
-            <li><a href="mailto:sales@accutech.ae">sales@accutech.ae</a></li>
+            <li><i class="bi bi-geo-alt"></i> {{ company.address }}</li>
+            <li><a href="tel:+97143207944">{{ company.phone }}</a></li>
+            <li><a href="mailto:sales@accutech.ae">{{ company.email }}</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; {% now "Y" %} Accutech Middle East FZCO. All rights reserved.</span>
-        <span> Design & Powered By Accutech IT Team</span>
+        <span>{{ base_bottom_left }}</span>
+        <span>{{ base_bottom_right }}</span>
       </div>
     </div>
   </footer>

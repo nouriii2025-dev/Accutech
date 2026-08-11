@@ -138,6 +138,7 @@ class ProductTypeAdmin(admin.ModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
         "name",
+        "model_number",
         "brand",
         "product_type",
         "order",
@@ -150,6 +151,7 @@ class ProductAdmin(admin.ModelAdmin):
     )
     search_fields = (
         "name",
+        "model_number",
         "brand__name",
         "product_type__name",
         "product_type__subcategory__name",
@@ -160,7 +162,35 @@ class ProductAdmin(admin.ModelAdmin):
         "name",
     )
 
+@admin.register(Site_Product_Content)
+class Site_Product_ContentAdmin(admin.ModelAdmin):
+    list_display = ("key", "value")
+    search_fields = ("key", "value")
+
 @admin.register(Site_Calibration_Content)
 class Site_Calibration_ContentAdmin(admin.ModelAdmin):
+    list_display = ("key", "value")
+    search_fields = ("key", "value")
+
+@admin.register(Calibration_Service)
+class CalibrationServiceAdmin(admin.ModelAdmin):
+    list_display = ("title", "description", "order", "is_active")
+    list_filter = ("is_active",)
+    search_fields = ("title", "description")
+    ordering = ("order",)
+
+@admin.register(Calibration_Capabilities)
+class CalibrationCapabilitiesAdmin(admin.ModelAdmin):
+    list_display = ("title", "description", "order")
+    search_fields = ("title", "description")
+    ordering = ("order",)
+
+@admin.register(Site_Base_Content)
+class Site_Base_ContentAdmin(admin.ModelAdmin):
+    list_display = ("key", "value")
+    search_fields = ("key", "value")
+
+@admin.register(Company_Details)
+class Company_DetailsAdmin(admin.ModelAdmin):
     list_display = ("key", "value")
     search_fields = ("key", "value")

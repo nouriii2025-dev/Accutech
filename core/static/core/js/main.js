@@ -548,11 +548,7 @@ function render() {
                 </div>
 
                 <div class="ps-card-cat">
-                    ${product.subcategory
-                        ? product.subcategory + " — "
-                        : ""
-                    }
-                    ${product.product_type || ""}
+                   Model: ${product.model_number || ""}
                 </div>
 
                 <div class="ps-card-cta">

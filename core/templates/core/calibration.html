@@ -26,39 +26,29 @@
       <h4 class="reveal in" style="max-width: 22ch; font-size: clamp(2.2rem, 4vw, 3.2rem);">{{ calibration_middle_title }}</h4>
     </div>
     <div class="cs-services-grid">
-      <div class="cs-service-card">
-        <div class="cs-service-img"><img src="https://www.accutech.ae/assets/images/homepage/Solutions.jpg" alt="Solutions"></div>
+      {% for service in calibration_services %}
+      <div class="cs-service-card reveal">
+        <div class="cs-service-img">
+          {% if service.image %}
+            <img src="{{ service.image.url }}" alt="{{ service.title }}">
+          {% endif %}
+        </div>
         <div class="cs-service-body">
-          <h4>Solutions</h4>
-          <p>We ensure efficiency and sustainability by helping you define a strategy, implement efficiency plans, and monitor performance for optimized operations.</p>
+          <h4>{{ service.title }}</h4>
+          <p>{{ service.description }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================
+     2) FULL LABORATORY / CALIBRATION & TESTING PAGE
         </div>
       </div>
 
-      <!-- Calibration & Testing (the section requested) -->
-      <div class="cs-service-card">
-        <div class="cs-service-img"><img src="https://www.accutech.ae/assets/images/homepage/calibration.png" alt="Calibration and Testing"></div>
-        <div class="cs-service-body">
-          <h4>Calibration &amp; Testing</h4>
-          <p>Our mission is to ensure customer satisfaction by maintaining an environment dedicated to quality, capability and timeliness. We give clients the confidence that their equipment is taking accurate measurements and can stand up to any inspectional or auditing process.</p>
-          <!-- <a class="cs-service-link" href="#laboratory">Learn more →</a> -->
-        </div>
-      </div>
-
-      <div class="cs-service-card">
-        <div class="cs-service-img"><img src="https://www.accutech.ae/assets/images/homepage/supply.jpg" alt="Supply Chain"></div>
-        <div class="cs-service-body">
-          <h4>Supply Chain</h4>
-          <p>We ensure the availability and quality of the materials we require to serve our customers, strengthening competitiveness by optimizing total cost and leveraging supplier innovation.</p>
-        </div>
-      </div>
-
-      <div class="cs-service-card">
-        <div class="cs-service-img"><img src="https://www.accutech.ae/assets/images/homepage/installation.jpg" alt="Commissioning"></div>
-        <div class="cs-service-body">
-          <h4>Commissioning</h4>
-          <p>Procedures related to installation and commissioning are specifically defined for each piece of equipment, and all our personnel have the necessary skills for the job.</p>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -184,80 +174,19 @@
     <div class="cs-wrap">
       <h2>{{ calibration_bottom_title }}</h2>
       <div class="cs-service-detail-grid">
-
+        {% for capability in calibration_capabilities %}
         <div class="cs-service-detail">
-          <div class="cs-service-detail-img">Image to be placed here</div>
+          <div class="cs-service-detail-img">
+            {% if capability.image %}
+              <img src="{{ capability.image.url }}" alt="{{ capability.title }}">
+            {% endif %}
+          </div>
           <div class="cs-service-detail-body">
-            <h4>Quality Service</h4>
-            <p>Our mission is to ensure customer satisfaction by maintaining an environment dedicated to quality, capability and timeliness. We consistently deliver what we promise, on schedule, with a fast turnaround on most calibration services (including overnight and four-day service) and onsite scheduling.</p>
+            <h4>{{ capability.title }}</h4>
+            <p>{{ capability.description }}</p>
           </div>
         </div>
-
-        <div class="cs-service-detail">
-          <div class="cs-service-detail-img">Image to be placed here</div>
-          <div class="cs-service-detail-body">
-            <h4>Mechanical Measurements</h4>
-            <p>Calibration of mechanical measurement instruments — analytical balances, spring scales, dynamometers, force gauges, proving rings, weighing bridges, compression/tensile machines, load cells, RPM gauges, tachometers, stroboscopes, torque wrenches and torque transducers.</p>
-          </div>
-        </div>
-
-        <div class="cs-service-detail">
-          <div class="cs-service-detail-img">Image to be placed here</div>
-          <div class="cs-service-detail-body">
-            <h4>Temperature Measurement &amp; Generation</h4>
-            <p>Calibration of temperature gauges, indicators, thermocouples, RTDs, glass thermometers, temperature transmitters and switches, digital controllers, control valves, hygrometers and pyrometers, using WIKA dry blocks and calibration baths with Scandura MFC.</p>
-          </div>
-        </div>
-
-        <div class="cs-service-detail">
-          <div class="cs-service-detail-img">Image to be placed here</div>
-          <div class="cs-service-detail-body">
-            <h4>Electrical &amp; Humidity Measurement</h4>
-            <p>Calibration of analogue/digital multimeters, clamp-on meters, current/voltage injection sources, frequency response analyzers, transformer turns ratio meters, meggars, insulation testers, oscilloscopes, power meters and welding rectifiers.</p>
-          </div>
-        </div>
-
-        <div class="cs-service-detail">
-          <div class="cs-service-detail-img">Image to be placed here</div>
-          <div class="cs-service-detail-body">
-            <h4>Process Measurement &amp; Monitoring</h4>
-            <p>Calibration of process measuring instruments, controllers, transmitters, shut-off valves, control valves, flow meters and transmitters, level indicators and transmitters, and all kinds of switches.</p>
-          </div>
-        </div>
-
-        <div class="cs-service-detail">
-          <div class="cs-service-detail-img">Image to be placed here</div>
-          <div class="cs-service-detail-body">
-            <h4>Pressure Measurement &amp; Generation</h4>
-            <p>Calibration of pressure gauges, master pressure gauges, barometers, manometers, pressure recorders, transmitters, switches, control valves, regulator valves, calibrators, and hydraulic/pneumatic dead weight testers.</p>
-          </div>
-        </div>
-
-        <div class="cs-service-detail">
-          <div class="cs-service-detail-img">Image to be placed here</div>
-          <div class="cs-service-detail-body">
-            <h4>Analytical Instruments</h4>
-            <p>Ultrasonic paint/material thickness gauges, adhesion testers, magmeters, ferrite meters, hardness testers, colour/flame spectrometers, lux meters, noise level meters, moisture analysers, viscometers, hydrometers, pH/conductivity/TDS/turbidity meters, and anemometers.</p>
-          </div>
-        </div>
-
-        <div class="cs-service-detail">
-          <div class="cs-service-detail-img">Image to be placed here</div>
-          <div class="cs-service-detail-body">
-            <h4>Dimensional Measurement</h4>
-            <p>Calibration of steel rules, measuring tapes, vernier calipers, micrometers, dial indicators, height and depth gauges, tri-square bevel protectors, dip rods, staff rods, distance and feeler gauges, and bubble levels.</p>
-          </div>
-        </div>
-
-        <div class="cs-service-detail">
-          <div class="cs-service-detail-img">Image to be placed here</div>
-          <div class="cs-service-detail-body">
-            <h4>PRV &amp; PSV Testing</h4>
-            <p>State-of-the-art pressure test bench from Ventil (Netherlands) for inspection, testing and certification of PRVs/PSVs up to 10" flange size and popping pressure to 300 bar / 4350 psi, per API 527 &amp; 576. Seat leakage is detected per API 527 with adapters and a bubble tester; the bench can also be deployed on site.</p>
-          </div>
-        </div>
-
-      </div>
+        {% endfor %}
     </div>
   </section>
 </div>

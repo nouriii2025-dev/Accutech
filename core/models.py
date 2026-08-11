@@ -199,6 +199,7 @@ class Product(models.Model):
         related_name="products"
     )
 
+    model_number = models.CharField(max_length=200, blank=True)
     short_description = models.TextField(blank=True)
     description = models.TextField(blank=True)
 
@@ -231,7 +232,58 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+class Site_Product_Content(models.Model):
+    key = models.CharField(max_length=100, unique=True)
+    value = models.TextField()
+
+    def __str__(self):
+        return self.key
+
 class Site_Calibration_Content(models.Model):
+    key = models.CharField(max_length=100, unique=True)
+    value = models.TextField()
+
+    def __str__(self):
+        return self.key
+
+class Calibration_Service(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+    order = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+    image = models.ImageField(upload_to="calibration_services/", blank=True, null=True)
+
+    class Meta:
+        ordering = ["order", "title"]
+        verbose_name = "Calibration Service"
+        verbose_name_plural = "Calibration Services"
+
+    def __str__(self):
+        return self.title
+
+class Calibration_Capabilities(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+    order = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+    image = models.ImageField(upload_to="calibration_capabilities/", blank=True, null=True)
+
+    class Meta:
+        ordering = ["order", "title"]
+        verbose_name = "Calibration Capability"
+        verbose_name_plural = "Calibration Capabilities"
+
+    def __str__(self):
+        return self.title
+
+class Site_Base_Content(models.Model):
+    key = models.CharField(max_length=100, unique=True)
+    value = models.TextField()
+
+    def __str__(self):
+        return self.key
+
+class Company_Details(models.Model):
     key = models.CharField(max_length=100, unique=True)
     value = models.TextField()
 

@@ -19,12 +19,12 @@
 ======================================================== -->
 <section class="section" style="padding-top: 100px;">
   <div class="container-fluid-safe">
-    <div class="eyebrow reveal in">Our Products</div>
+    <div class="eyebrow reveal in">{{ product_eyebrow }}</div>
     <h1 class="reveal in" style="max-width: 22ch; font-size: clamp(2.2rem, 4vw, 3.2rem);">
-      Product Range
+      {{ product_title }}
     </h1>
     <p class="section-lede reveal in" style="max-width: 62ch; font-size: 1.1rem;">
-      Explore our comprehensive catalog of pressure, temperature, flow, and calibration instruments. Use the filters to narrow down your search by category, sub-category, and brand.
+      {{ product_description }}
     </p>
   </div>
 </section>
@@ -136,6 +136,5 @@
     </div>
   </div>
 </div>
-
 
 {% endblock %}
