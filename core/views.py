@@ -257,9 +257,21 @@ def terms(request):
         }
     return render(request, "core/terms.html", context)
 
+
+def get_calibration_content():
+    return {
+        item.key: item.value
+        for item in Site_Calibration_Content.objects.all()
+    }
 def calibration(request):
+    content = get_calibration_content()
     context = {
         "company": COMPANY,
+        "calibration_eyebrow": content.get("calibration_eyebrow"),
+        "calibration_top_title": content.get("calibration_top_title"),
+        "calibration_top_description": content.get("calibration_top_description"),
+        "calibration_middle_title": content.get("calibration_middle_title"),
+        "calibration_bottom_title": content.get("calibration_bottom_title"),
     }
     return render(request, "core/calibration.html", context)
 

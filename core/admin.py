@@ -159,3 +159,8 @@ class ProductAdmin(admin.ModelAdmin):
         "order",
         "name",
     )
+
+@admin.register(Site_Calibration_Content)
+class Site_Calibration_ContentAdmin(admin.ModelAdmin):
+    list_display = ("key", "value")
+    search_fields = ("key", "value")
