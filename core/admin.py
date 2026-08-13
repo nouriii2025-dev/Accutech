@@ -15,6 +15,12 @@ class Site_Home_ContentAdmin(admin.ModelAdmin):
     list_display = ("key", "value")
     search_fields = ("key", "value")
 
+@admin.register(Home_Image_Content)
+class Home_Image_ContentAdmin(admin.ModelAdmin):
+    list_display = ("title","is_active",)
+    list_filter = ("is_active",)
+    search_fields = ("title", "description",)
+
 @admin.register(Brand)
 class BrandAdmin(admin.ModelAdmin):
     list_display = ("name", "logo", "is_active")

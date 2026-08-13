@@ -33,6 +33,16 @@ class Site_Home_Content(models.Model):
 
     def __str__(self):
         return self.key
+
+class Home_Image_Content(models.Model):
+    title = models.CharField(max_length=300)
+
+    image = models.ImageField(upload_to="home/hero/",blank=True,null=True)
+
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.title
         
 class Brand(models.Model):
     name = models.CharField(max_length=150)

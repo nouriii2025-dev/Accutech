@@ -7,10 +7,6 @@
   <div class="hero-grid">
     <div class="reveal in">
       <div class="eyebrow">{{ hero_eyebrow }}</div>
-      <!-- <h1>
-        Precision instrumentation,<br>
-        engineered like it's <span class="accent">redline‑tested</span>.
-      </h1> -->
       <h1>{{ hero_title }}</h1>
       <p class="hero-lede">
         {{ hero_description }}
@@ -39,16 +35,13 @@
         <svg viewBox="0 0 300 300" width="320" height="320" role="img" aria-label="Instrument accuracy gauge showing plus or minus zero point one percent">
           <circle cx="150" cy="150" r="120" fill="none" stroke="var(--line)" stroke-width="1"></circle>
 
-          <!-- background arc -->
           <path d="M 72.22 227.78 A 110 110 0 1 1 227.78 227.78"
                 fill="none" class="gauge-arc-bg" stroke-width="6" stroke-linecap="round"></path>
 
-          <!-- animated fill arc (dasharray approximated to path length) -->
           <path d="M 72.22 227.78 A 110 110 0 1 1 227.78 227.78"
                 fill="none" class="gauge-arc-fill" stroke-width="6" stroke-linecap="round"
                 pathLength="340"></path>
 
-          <!-- tick marks -->
           <g>
             <line x1="72.2" y1="227.8" x2="84.9" y2="215.1" class="gauge-tick major"></line>
             <line x1="42.1" y1="171.5" x2="51.9" y2="169.5" class="gauge-tick"></line>
@@ -61,7 +54,6 @@
             <line x1="227.8" y1="227.8" x2="215.1" y2="215.1" class="gauge-tick major redline"></line>
           </g>
 
-          <!-- needle -->
           <g class="gauge-needle">
             <line x1="150" y1="150" x2="150" y2="60" stroke="var(--ignition)" stroke-width="4" stroke-linecap="round"></line>
             <circle cx="150" cy="150" r="9" fill="var(--ignition)"></circle>
@@ -123,23 +115,6 @@
   </div>
 </section>
 
-<!-- <section class="section-panel">
-  <div class="container-fluid-safe">
-    <div class="dial-divider reveal">
-      <span class="eyebrow" style="margin:0;">{{ brand_card_eyebrow }}</span>
-      <span class="line"></span>
-    </div>
-    <div class="brand-strip">
-      {% for b in brands %}
-      <div class="brand-card reveal">
-        <div class="brand-name">{{ b.name }}</div>
-        <div class="brand-role">{{ b.role }}</div>
-        <p>{{ b.note }}</p>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</section> -->
 <section class="brands-section">
     <div class="container">
 
