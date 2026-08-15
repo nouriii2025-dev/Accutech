@@ -91,7 +91,9 @@ WSGI_APPLICATION = 'accutech_redesign.wsgi.application'
 # }
 DATABASES = {
     'default': dj_database_url.parse(
-        os.getenv('DATABASE_URL')
+        os.getenv('DATABASE_URL'),
+        conn_max_age=600,
+        ssl_require=True,
     )
 }
 
