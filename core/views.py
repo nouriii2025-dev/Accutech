@@ -107,103 +107,7 @@ def products(request):
 
     return render(request,"core/products.html",context)
 
-# def product_data(request):
-#     categories = ProductCategory.objects.filter(
-#         is_active=True
-#     ).prefetch_related(
-#         "subcategories__product_types"
-#     )
-
-#     products = Product.objects.filter(
-#         is_active=True
-#     ).select_related(
-#         "brand",
-#         "product_type__subcategory__category"
-#     )
-
-#     category_data = []
-
-#     for category in categories:
-#         subcategories = []
-
-#         for subcategory in category.subcategories.filter(
-#             is_active=True
-#         ):
-#             product_types = []
-
-#             for product_type in subcategory.product_types.filter(
-#                 is_active=True
-#             ):
-#                 product_types.append({
-#                     "id": product_type.id,
-#                     "name": product_type.name,
-#                     "slug": product_type.slug,
-#                 })
-
-#             subcategories.append({
-#                 "id": subcategory.id,
-#                 "name": subcategory.name,
-#                 "slug": subcategory.slug,
-#                 "product_types": product_types,
-#             })
-
-#         category_data.append({
-#             "id": category.id,
-#             "name": category.name,
-#             "slug": category.slug,
-#             "icon": category.icon,
-#             "subcategories": subcategories,
-#         })
-
-#     product_data_list = []
-
-#     for product in products:
-#         product_data_list.append({
-#             "id": product.id,
-#             "name": product.name,
-#             "slug": product.slug,
-
-#             "brand": (
-#                 product.brand.name
-#                 if product.brand
-#                 else ""
-#             ),
-#             "model_number": product.model_number,
-#             "category": product.product_type.subcategory.category.name,
-#             "category_slug": product.product_type.subcategory.category.slug,
-
-#             "subcategory": product.product_type.subcategory.name,
-#             "subcategory_slug": product.product_type.subcategory.slug,
-
-#             "product_type": product.product_type.name,
-#             "product_type_slug": product.product_type.slug,
-
-#             "short_description": product.short_description,
-#             "description": product.description,
-
-#             "image": (
-#                 product.image.url
-#                 if product.image
-#                 else ""
-#             ),
-
-#             "datasheet": (
-#                 product.datasheet.url
-#                 if product.datasheet
-#                 else ""
-#             ),
-
-#             "specifications": product.specifications or {},
-#         })
-
-#     return JsonResponse({
-#         "categories": category_data,
-#         "products": product_data_list,
-#     })
-
 def product_data(request):
-    start = time.time()
-
     categories = ProductCategory.objects.filter(
         is_active=True
     ).prefetch_related(
@@ -216,8 +120,6 @@ def product_data(request):
         "brand",
         "product_type__subcategory__category"
     )
-
-    print("DATABASE QUERY SETUP:", time.time() - start)
 
     category_data = []
 
@@ -253,8 +155,6 @@ def product_data(request):
             "subcategories": subcategories,
         })
 
-    print("AFTER CATEGORIES:", time.time() - start)
-
     product_data_list = []
 
     for product in products:
@@ -268,48 +168,33 @@ def product_data(request):
                 if product.brand
                 else ""
             ),
-
             "model_number": product.model_number,
+            "category": product.product_type.subcategory.category.name,
+            "category_slug": product.product_type.subcategory.category.slug,
 
-            "category":
-                product.product_type.subcategory.category.name,
+            "subcategory": product.product_type.subcategory.name,
+            "subcategory_slug": product.product_type.subcategory.slug,
 
-            "category_slug":
-                product.product_type.subcategory.category.slug,
+            "product_type": product.product_type.name,
+            "product_type_slug": product.product_type.slug,
 
-            "subcategory":
-                product.product_type.subcategory.name,
+            "short_description": product.short_description,
+            "description": product.description,
 
-            "subcategory_slug":
-                product.product_type.subcategory.slug,
-
-            "product_type":
-                product.product_type.name,
-
-            "product_type_slug":
-                product.product_type.slug,
-
-            "short_description":
-                product.short_description,
-
-            "description":
-                product.description,
-
-            "image":
+            "image": (
                 product.image.url
                 if product.image
-                else "",
+                else ""
+            ),
 
-            "datasheet":
+            "datasheet": (
                 product.datasheet.url
                 if product.datasheet
-                else "",
+                else ""
+            ),
 
-            "specifications":
-                product.specifications or {},
+            "specifications": product.specifications or {},
         })
-
-    print("AFTER PRODUCTS:", time.time() - start)
 
     return JsonResponse({
         "categories": category_data,
