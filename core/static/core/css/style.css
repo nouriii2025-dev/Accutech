@@ -2292,4 +2292,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .info-row { grid-template-columns: 1fr; gap: 0.3rem; }
 }
 
-
+.ps-loading {
+    grid-column: 1 / -1;
+    padding: 60px 20px;
+    text-align: center;
+    font-size: 1rem;
+    opacity: 0.6;
+}

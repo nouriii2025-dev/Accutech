@@ -62,7 +62,9 @@ const state = {
 
 async function loadProductData() {
     try {
+        console.time("PRODUCT DATA");
         const response = await fetch("/products/data/");
+        console.timeEnd("PRODUCT DATA");
 
         if (!response.ok) {
             throw new Error(
