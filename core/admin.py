@@ -200,3 +200,9 @@ class Site_Base_ContentAdmin(admin.ModelAdmin):
 class Company_DetailsAdmin(admin.ModelAdmin):
     list_display = ("key", "value")
     search_fields = ("key", "value")
+
+@admin.register(Home_Stat_Content)
+class Home_Stat_ContentAdmin(admin.ModelAdmin):
+    list_display = ("title", "detail", "is_active")
+    list_filter = ("is_active",)
+    search_fields = ("title", "detail")

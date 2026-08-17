@@ -2,7 +2,7 @@
 {% block title %}About Accutech — Control & Instrumentation Since 1996{% endblock %}
 
 {% block content %}
-<section class="section" style="padding-top: 160px;">
+<!-- <section class="section" style="padding-top: 160px;">
   <div class="container-fluid-safe">
     <div class="eyebrow reveal in">{{ about_eyebrow }}</div>
     <h1 class="reveal in" style="max-width: 20ch; font-size: clamp(2.2rem, 4vw, 3.2rem);">
@@ -66,6 +66,64 @@
         {{ last_content_description }}
       </p>
     </div>
+  </div>
+</section> -->
+<!-- 1. PARALLAX INTRO -->
+<section class="parallax-bg-image parallax-1">
+  <div class="parallax-inner">
+    <div class="eyebrow">{{ about_eyebrow }}</div>
+    <h1>{{ about_title }}</h1>
+    <p>{{ about_description }}</p>
+  </div>
+</section>
+
+<!-- 2. NORMAL - TWO COLUMNS -->
+<section class="normal-section">
+  <div class="container-fluid-safe">
+    <div class="grid-2">
+      <div>
+        <div class="eyebrow">{{ left_column_eyebrow }}</div>
+        <h2>{{ left_column_title }}</h2>
+        <p style="color: var(--steel);">{{ left_column_description }}</p>
+      </div>
+      <div>
+        <div class="eyebrow">{{ right_column_eyebrow }}</div>
+        <h2>{{ right_column_title }}</h2>
+        <p style="color: var(--steel);">{{ right_column_description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. PARALLAX DIVIDER -->
+<section class="parallax-bg-image parallax-2">
+  <div class="parallax-inner">
+   <h2>{{ milestone_title }}</h2>
+  </div>
+</section>
+
+<!-- 4. NORMAL - FULL MILESTONES (kept together) -->
+<section class="normal-section">
+  <div class="container-fluid-safe">
+
+    <div class="timeline">
+      {% for m in milestones %}
+      <div class="item">
+        <div class="year mono">{{ m.year }}</div>
+        <h4>{{ m.title }}</h4>
+        <p>{{ m.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- 5. PARALLAX FINAL -->
+<section class="parallax-bg-image parallax-3">
+  <div class="parallax-inner">
+    <div class="eyebrow">{{ last_content_eyebrow }}</div>
+    <h2>{{ last_content_title }}</h2>
+    <p>{{ last_content_description }}</p>
   </div>
 </section>
 {% endblock %}

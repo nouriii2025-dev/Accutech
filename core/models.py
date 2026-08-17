@@ -302,3 +302,10 @@ class Company_Details(models.Model):
 
     def __str__(self):
         return self.key
+
+class Home_Stat_Content(models.Model):
+    title = models.CharField(max_length=200)
+    detail = models.TextField(blank=True)
+    is_active = models.BooleanField(default=True)
+    def __str__(self):
+        return self.title

@@ -35,12 +35,17 @@ def home(request):
         "contact_card_title": content.get("home_contact_card_title"),
         "contact_card_subtitle": content.get("home_contact_card_subtitle"),
 
-        "solutions": SOLUTIONS[:6],
+        "solutions": Solution.objects.filter(is_active=True).order_by("order"),
         "brands": Brand.objects.filter(is_active=True),
-        "stats": STATS,
+        "stats": Home_Stat_Content.objects.filter(is_active=True),
+        "home_images": {
+            image.title: image
+            for image in Home_Image_Content.objects.filter(is_active=True)
+        },
         "certifications": Certification.objects.all(),
     }
     return render(request, "core/home.html", context)
+
 
 
 def get_about_content():

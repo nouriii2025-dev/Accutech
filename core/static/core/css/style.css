@@ -111,15 +111,6 @@ a:hover { color: var(--amber); }
   transition: border-color 0.3s ease, background 0.3s ease;
 }
 
-/* .navbar-inner {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 14px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-} */
-
 .navbar-inner {
   max-width: 1240px;
   margin: 0 auto;
@@ -129,27 +120,12 @@ a:hover { color: var(--amber); }
   justify-content: space-between;
 }
 
-/* .brand-logo {
-  height: 40px;
-  width: auto;
-  display: block;
-} */
  .brand-logo {
   height: 70px;
   width: auto;
   display: block;
   object-fit: contain;
 }
-
-/* .brand-mark {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: var(--chrome);
-} */
 
 .brand-mark {
   display: flex;
@@ -257,7 +233,7 @@ a:hover { color: var(--amber); }
    ========================================================================= */
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 700px;
   display: flex;
   align-items: center;
   padding: 140px 0 80px;
@@ -274,6 +250,18 @@ a:hover { color: var(--amber); }
   align-items: center;
   position: relative;
   z-index: 2;
+}
+
+.hero-grid > div {
+  max-width: 720px;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.10);
+    z-index: 1;
+    display: none;
 }
 
 .hero h1 {
@@ -316,6 +304,7 @@ a:hover { color: var(--amber); }
   transform: translateY(-2px);
   box-shadow: 0 10px 30px rgba(209, 39, 58, 0.28);
 }
+
 .btn-outline-steel {
   background: transparent;
   color: var(--chrome);
@@ -325,7 +314,7 @@ a:hover { color: var(--amber); }
   border-color: var(--chrome);
   color: var(--chrome);
   transform: translateY(-2px);
-}
+} 
 
 .hero-stats {
   display: grid;
@@ -347,7 +336,8 @@ a:hover { color: var(--amber); }
   color: var(--steel-dim);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-}
+} 
+
 
 /* --- the gauge --- */
 .gauge-wrap {
@@ -422,7 +412,7 @@ a:hover { color: var(--amber); }
   gap: 1rem;
   margin-bottom: 3rem;
 }
-.section-title-row h2 { font-size: clamp(1.9rem, 3vw, 2.6rem); max-width: 18ch; }
+.section-title-row h2 { font-size: clamp(1.9rem, 3vw, 2.6rem); max-width: 28ch; }
 .section-lede { color: var(--steel); max-width: 42ch; }
 
 /* solution cards */
@@ -2298,4 +2288,79 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     text-align: center;
     font-size: 1rem;
     opacity: 0.6;
+}
+
+/* =========================================================================
+   PARALLAX SECTIONS (CodePen style)
+   ========================================================================= */
+
+.parallax-bg-image {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #ffffff;
+  text-align: center;
+  padding: 160px 24px;
+  position: relative;
+}
+
+.parallax-bg-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 36, 71, 0.68);
+  z-index: 1;
+}
+
+.parallax-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.parallax-bg-image .eyebrow {
+  color: var(--ignition);
+}
+.parallax-bg-image .eyebrow::before {
+  background: var(--ignition);
+}
+
+.parallax-bg-image h1 {
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  color: #fff;
+  margin-bottom: 1.2rem;
+}
+
+.parallax-bg-image h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: #fff;
+  margin: 0;
+}
+
+.parallax-bg-image p {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 60ch;
+  margin: 1rem auto 0;
+  line-height: 1.7;
+}
+
+/* Normal sections */
+.normal-section {
+  background: var(--bg-asphalt);
+  padding: 100px 0;
+}
+
+.parallax-1 {
+  background-image: url('https://images.unsplash.com/photo-1513828583688-c52646db42da?w=1920&q=80'); 
+}
+
+.parallax-2 {
+  background-image: url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1920&q=80'); 
+}
+
+.parallax-3 {
+  background-image: url('https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=1920&q=80'); 
 }
