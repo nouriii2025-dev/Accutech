@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<section class="hero">
+<!-- <section class="hero">
   <div class="hero-grid">
     <div class="reveal in">
       <div class="eyebrow">{{ hero_eyebrow }}</div>
@@ -134,7 +134,6 @@
                     {% endif %}
                 {% endfor %}
 
-                <!-- Duplicate logos for seamless animation -->
                 {% for brand in brands %}
                     {% if brand.is_active %}
                         <div class="brand-logo">
@@ -167,6 +166,193 @@
     </ul>
   </div>
 </section>
+
+<section class="section">
+  <div class="container-fluid-safe">
+    <div class="cta-band reveal">
+      <div>
+        <h3>{{ contact_card_title }}</h3>
+        <p>{{ contact_card_subtitle }}</p>
+      </div>
+      <a href="{% url 'core:contact' %}" class="btn-ignition">
+        <i class="bi bi-send-fill"></i> Start a Conversation
+      </a>
+    </div>
+  </div>
+</section> -->
+
+<section class="hero" 
+ {% if home_images.home_topsection_image.image %}
+  style="background-image: url('{{ home_images.home_topsection_image.image.url }}');"
+{% endif %}>
+  <div class="hero-grid">
+    <div class="reveal in">
+      <div class="eyebrow">{{ hero_eyebrow }}</div>
+      <h1>{{ hero_title }}</h1>
+      <p class="hero-lede">{{ hero_description }}</p>
+
+      <div class="hero-actions">
+        <a href="{% url 'core:contact' %}" class="btn-ignition">
+          <i class="bi bi-lightning-charge-fill"></i> Request a Quote
+        </a>
+        <a href="{% url 'core:solutions' %}" class="btn-outline-steel">
+          <i class="bi bi-speedometer2"></i> Explore Solutions
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        {% for stat in stats %}
+        <div class="stat">
+          <div class="stat-value mono">{{ stat.title }}</div>
+          <div class="stat-label">{{ stat.detail }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- <div class="gauge-wrap reveal in">
+      <div class="gauge-panel">
+        <svg viewBox="0 0 300 300" width="320" height="320"
+             role="img" aria-label="Instrument accuracy gauge showing ±0.1%">
+          <circle cx="150" cy="150" r="120" fill="none" stroke="var(--line)" stroke-width="1"></circle>
+
+          <path d="M 72.22 227.78 A 110 110 0 1 1 227.78 227.78"
+                fill="none" class="gauge-arc-bg" stroke-width="7" stroke-linecap="round"></path>
+
+          <path d="M 72.22 227.78 A 110 110 0 1 1 227.78 227.78"
+                fill="none" class="gauge-arc-fill" stroke-width="7" stroke-linecap="round"
+                pathLength="340"></path>
+
+          <g>
+            <line x1="72.2"  y1="227.8" x2="84.9"  y2="215.1" class="gauge-tick major"></line>
+            <line x1="42.1"  y1="171.5" x2="51.9"  y2="169.5" class="gauge-tick"></line>
+            <line x1="48.4"  y1="107.9" x2="65.0"  y2="114.8" class="gauge-tick major"></line>
+            <line x1="88.9"  y1="58.5"  x2="94.4"  y2="66.9"  class="gauge-tick"></line>
+            <line x1="150.0" y1="40.0"  x2="150.0" y2="58.0"  class="gauge-tick major"></line>
+            <line x1="211.1" y1="58.5"  x2="205.6" y2="66.9"  class="gauge-tick"></line>
+            <line x1="251.6" y1="107.9" x2="235.0" y2="114.8" class="gauge-tick major"></line>
+            <line x1="257.9" y1="171.5" x2="248.1" y2="169.5" class="gauge-tick redline"></line>
+            <line x1="227.8" y1="227.8" x2="215.1" y2="215.1" class="gauge-tick major redline"></line>
+          </g>
+
+          <g class="gauge-needle">
+            <line x1="150" y1="150" x2="150" y2="60"
+                  stroke="var(--ignition)" stroke-width="4" stroke-linecap="round"></line>
+            <circle cx="150" cy="150" r="9" fill="var(--ignition)"></circle>
+            <circle cx="150" cy="150" r="4" fill="#ffffff"></circle>
+          </g>
+
+          <text x="150" y="185" text-anchor="middle" class="gauge-readout">±0.1%</text>
+          <text x="150" y="203" text-anchor="middle" class="gauge-readout-label">RATED ACCURACY</text>
+        </svg>
+      </div>
+    </div> -->
+  </div>
+</section>
+
+
+<section class="section-panel">
+  <div class="container-fluid-safe">
+    <div class="section-title-row reveal">
+      <div>
+        <div class="eyebrow">{{ solutions_eyebrow }}</div>
+        <h2>{{ solutions_title }}</h2>
+      </div>
+      <p class="section-lede">{{ solutions_description }}</p>
+    </div>
+
+    <div class="grid-3">
+      {% for s in solutions %}
+      <article class="card-solution reveal">
+        <div class="icon">
+          <i class="bi bi-{% if s.icon == 'gauge' %}speedometer2{% elif s.icon == 'thermometer' %}thermometer-half{% elif s.icon == 'layers' %}layers{% elif s.icon == 'activity' %}activity{% elif s.icon == 'sliders' %}sliders{% else %}wind{% endif %}"></i>
+        </div>
+        <h3>{{ s.title }}</h3>
+        <p>{{ s.summary }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container-fluid-safe">
+    <div class="grid-2">
+      <article class="card-solution reveal">
+        <div class="icon"><i class="bi bi-boxes"></i></div>
+        <h3>{{ product_card_title }}</h3>
+        <p>{{ product_card_description }}</p>
+        <a href="{% url 'core:products' %}" class="btn-outline-steel card-cta">
+          Browse Products <i class="bi bi-arrow-right"></i>
+        </a>
+      </article>
+
+      <article class="card-solution reveal">
+        <div class="icon"><i class="bi bi-diagram-3"></i></div>
+        <h3>{{ project_card_title }}</h3>
+        <p>{{ project_card_description }}</p>
+        <a href="{% url 'core:projects' %}" class="btn-outline-steel card-cta">
+          View Projects <i class="bi bi-arrow-right"></i>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<section class="brands-section">
+  <div class="container">
+    <div class="section-heading">
+      <span></span>
+      <p>TRUSTED BRAND PARTNERS</p>
+      <span></span>
+    </div>
+
+    <div class="brands-marquee">
+      <div class="brands-track">
+        {% for brand in brands %}
+          {% if brand.is_active %}
+          <div class="brand-item">
+            <img src="{{ brand.logo.url }}" alt="{{ brand.name }}" loading="lazy">
+          </div>
+          {% endif %}
+        {% endfor %}
+
+        {% for brand in brands %}
+          {% if brand.is_active %}
+          <div class="brand-item">
+            <img src="{{ brand.logo.url }}" alt="{{ brand.name }}" loading="lazy">
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section-panel">
+  <div class="container-fluid-safe">
+    <div class="section-title-row reveal">
+      <div>
+        <div class="eyebrow">{{ certificate_card_eyebrow }}</div>
+        <h2>{{ certificate_card_title }}</h2>
+      </div>
+      <p class="section-lede">{{ certificate_card_description }}</p>
+    </div>
+
+    <ul class="cert-list reveal">
+      {% for c in certifications %}
+      <li>
+        <i class="bi bi-patch-check-fill"></i>
+        {{ c.name }}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
 
 <section class="section">
   <div class="container-fluid-safe">
